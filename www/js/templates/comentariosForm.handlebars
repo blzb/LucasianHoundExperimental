@@ -1,0 +1,21 @@
+			<div id="erroresComentariosForm"></div>
+<form id="comentariosForm">
+				<ul data-role="listview" data-inset="true" id="comentariosFormListView" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-btn-up-a ui-li ui-li-static ui-body-a ui-corner-top">
+						<label for="comentarioNombre" class="ui-input-text">Nombre:</label>
+						<input type="text" name="comentarioNombre" id="comentarioNombre" class="required ui-input-text ui-body-a ui-corner-all ui-shadow-inset"></li>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-btn-up-a ui-li ui-li-static ui-body-a">
+						<label for="comentarioEmail" class="ui-input-text">Email:</label>
+						<input type="text" name="comentarioEmail" id="comentarioEmail" class="required email ui-input-text ui-body-a ui-corner-all ui-shadow-inset">
+						</li>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-btn-up-a ui-li ui-li-static ui-body-a">
+						<label for="comentarioTelefono" class="ui-input-text">Telefono:</label>
+						<input type="text" name="comentarioTelefono" id="comentarioTelefono" class="digits ui-input-text ui-body-a ui-corner-all ui-shadow-inset" minlength="8" maxlength="12">
+					</li>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-btn-up-a ui-li ui-li-static ui-body-a ui-corner-bottom">
+					<label for="comentarioComentario" class="ui-input-text">Comentario:</label>
+					<textarea name="comentarioComentario" id="comentarioComentario" class="required ui-input-text ui-body-a ui-corner-all ui-shadow-inset"></textarea>
+						</li>
+					</ul>
+					<a href="" data-role="button" onclick="hound.enviarComentario();" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="a" class="ui-btn ui-btn-up-a ui-shadow ui-btn-corner-all"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Enviar</span></span></a>
+			</form>

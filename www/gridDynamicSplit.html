@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/jquery.mobile.structure-1.1.0.css" />
+        <link rel="stylesheet" href="css/extra.css" />
+        <link rel="stylesheet" href="css/grid.css" />
+        <script src="phonegap.js"></script>
+        <script src="js/PushNotification.js"></script>
+        <script src="js-lib/jquery.js"></script>
+        <script src="js-lib/jquery.mobile.js"></script>
+        <script src="js/hound.common.js"></script>
+        <script src="js/hound.conf.js"></script>
+        <script src="js/hound.home.js"></script>
+        <script src="js/hound.display.js"></script>
+        <script src="js/hound.connection.js"></script>
+        <script src="js/hound.push.js"></script>
+        <script src="js-lib/jquery.validate.js"></script>
+        <script src="js-lib/handlebars.js"></script>
+        <script type="text/javascript"
+                src="http://maps.google.com/maps/api/js?sensor=true">
+        </script>
+        <script src="js/templates/template.js"></script>
+        <style type="text/css" id="jqueryStyle">
+        </style>
+    </head>
+    <body>
+        <div data-role="page" data-theme="a" id="menuPrincipal">
+            <div data-role="header"  >
+                <span class="ui-title tituloMenuPrincipal"> </span>
+            </div>
+            <!-- /header -->
+            <div data-role="content" class="contenidoPortada" >                
+            </div>
+            <!-- /content -->
+        </div>
+        <div data-role="page" data-theme="a" id="Catalogo">
+            <div data-role="header"  >
+                <span class="ui-title tituloCatalogo" > </span>
+            </div>
+            <div data-role="content" class="contenidoCatalogo" >
+                <div class="split_content">
+                    <div class="left_col">
+                        <div class="left_col_inner">
+                            <ul data-role="listview" data-theme="a" class="listCatalogos"
+                                data-inset="true">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="right_col">
+                        <div class="right_col_inner">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-role="page" data-theme="a" id="Articulos">
+            <div data-role="header"  >
+                <span class="ui-title tituloArticulos" > </span>
+            </div>
+            <div data-role="content" class="contenidoArticulos">
+                <div class="split_content">
+                    <div class="left_col">
+                        <div class="left_col_inner">
+                            <ul data-role="listview" data-theme="a" class="listCatalogos"
+                                data-inset="true">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="right_col">
+                        <div class="right_col_inner">                            
+                            <ul data-role="listview" data-theme="a" class="listArticulos"
+                                data-inset="true">
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-role="page" data-theme="a" id="Articulo">
+            <div data-role="header"  >
+                <span class="ui-title tituloArticulo"> </span>
+            </div>
+            <div data-role="content" class="ui-content">
+                <div class="split_content">
+                    <div class="left_col">
+                        <div class="left_col_inner">
+                            <ul data-role="listview" data-theme="a" class="listArticulos"
+                                data-inset="true">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="right_col">
+                        <div class="right_col_inner">
+                            <div class="contenidoArticulo"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-role="page" data-theme="a" id="Contactos">
+            <div data-role="header"  >
+                <span class="ui-title tituloContactos" > </span>
+            </div>
+            <div data-role="content" class="contenidoContactos" >
+                <ul data-role="listview" data-theme="a" class="listContactos"
+                    data-inset="true">
+                </ul>
+            </div>
+        </div>
+        <div data-role="page" data-theme="a" id="Promociones">
+            <div data-role="header"  >
+                <span class="ui-title tituloPromociones"> </span>
+            </div>
+            <div data-role="content" class="contenidoPromociones" >
+                <div class="split_content">
+                    <div class="left_col">
+                        <div class="left_col_inner">
+                            <ul data-role="listview" data-theme="a" class="listPromociones"
+                                data-inset="true">
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="right_col">
+                        <div class="right_col_inner">                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-role="page" data-theme="a" id="Promocion">
+            <div data-role="header"  >
+                <span class="ui-title tituloPromocion" > </span>
+            </div>            
+            <div data-role="content">
+                <div class="split_content">
+                    <div class="left_col">
+                        <div class="left_col_inner">
+                            <ul data-role="listview" data-theme="a" class="listPromociones"
+                                data-inset="true">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="right_col">
+                        <div class="right_col_inner">
+                            <div class="contenidoPromocion">                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-role="page" data-theme="a" id="Encuestas">
+            <div data-role="header"  >
+                <span class="ui-title tituloEncuestas" ></span>
+            </div>            
+            <div data-role="content" class="contenidoEncuestas">
+                <div class="split_content">
+                    <div class="left_col">
+                        <div class="left_col_inner">
+                            <ul data-role="listview" data-theme="a" class="listEncuestas"
+                                data-inset="true">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="right_col">
+                        <div class="right_col_inner">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-role="page" data-theme="a" id="Encuesta">
+            <div data-role="header"  >
+                <span class="ui-title tituloEncuesta" > </span>
+            </div>
+            <div data-role="content" >
+                <div class="split_content">
+                    <div class="left_col">
+                        <div class="left_col_inner">
+                            <ul data-role="listview" data-theme="a" class="listEncuestas"
+                                data-inset="true">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="right_col">
+                        <div class="right_col_inner">
+                            <div class="contenidoEncuesta">                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div data-role="page" data-theme="a" id="Localizador">
+            <div data-role="header"  >
+                <span class="ui-title tituloLocalizador" > </span>
+            </div>
+            <div data-role="content" class="contenidoLocalizador" ></div>
+        </div>
+        <!--div data-role="page" data-theme="a" id="opcionesLocalizador">
+            <div data-role="header"  >
+                <span class="ui-title" id="tituloOpcionesLocalizador">Opciones</span>
+            </div>
+            <div data-role="content" id="contenidoOpcionesLocalizador">
+                <ul data-role="listview" data-inset="true">
+                    <li><a href="" onclick="hound.displayTiendas()">Lista de
+                            ubicaciones</a></li>
+                    <li><a href="" onclick="hound.displayTienda(hound.cercano.id);">Ubicacion
+                            mas cercana</a></li>
+                </ul>
+            </div>
+        </div-->
+        <div data-role="page" data-theme="a" id="listaLocalizador">
+            <div data-role="header"  >
+                <span class="ui-title tituloListaLocalizador" ></span>
+            </div>
+            <div data-role="content" class="contenidoListaLocalizador" >
+                <ul data-role="listview" data-theme="a" class="listListaLocalizador"
+                    data-inset="true">
+                </ul>
+            </div>
+        </div>
+        <div data-role="page" data-theme="a" id="Comentarios">
+            <div data-role="header"  >
+                <span class="ui-title tituloComentarios" > </span>
+            </div>
+            <div data-role="content" class="contenidoComentarios" >
+            </div>
+        </div>
+        <script type="text/javascript">
+            onDeviceReady();
+        </script>
+    </body>
+</html>

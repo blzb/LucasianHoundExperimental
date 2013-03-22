@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/jquery.mobile.structure-1.1.0.css" />
+        <link rel="stylesheet" href="css/hound.css" />
+        <script src="phonegap.js"></script>
+        <script src="js/PushNotification.js"></script>   
+        <script src="js-lib/jquery.js"></script>
+        <script src="js-lib/jquery.mobile.js"></script>
+        <script src="js/hound.common.js"></script>
+        <script src="js/hound.conf.js"></script>
+        <script src="js/hound.connection.js"></script>	        
+        <script src="js/hound.push.js"></script>
+        <style type="text/css" id="jqueryStyle">
+        </style>
+    </head>
+    <body>
+
+        <div data-role="page" data-theme="a" id="pagina">
+
+            <div data-role="content">
+                <br/>
+                <br/>
+                <center id = "mensajes" style="height: 9.5em; overflow-y: visible;"></center>
+                <div id ="botonRecarga" style="display: none;">
+                    <center>
+                        <a href="" onclick="initApp();" data-role="button" data-icon="refresh" style="width: 50%;">Recargar Aplicacion</a>
+                    </center>
+                </div>
+            </div><!-- /content -->
+
+
+        </div><!-- /page -->
+        <script type="text/javascript">
+            /*$(document).ready(function () {
+                initApp();
+            });*/
+            document.addEventListener("deviceready", initApp, false);
+           
+            function initApp(){                
+                console.log("first on device ready");
+                hound.pushRegistration();
+                if(window.requestFileSystem){
+                    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
+                }
+                $("#mensajes").empty();
+                $("#botonRecarga").hide();
+                $.mobile.showPageLoadingMsg("a","Descargando Actualizaciones",false);
+                if(hound.isConnected()){
+                    hound.updateApp();
+                }
+            }
+            function onFileSystemSuccess(fileSystem) {
+                console.log("FILE SYSTEM OBTAINERD");
+                fileSystem.root.getDirectory("hound", {create: true, exclusive: false}, 
+                function(dir){
+                    console.log("DIRECTORY OBTAINED HOUND");
+                    hound.baseDirectory = dir;
+                    fileSystem.root.getDirectory(dir.name+"/tmp", {create: true, exclusive: false},
+                    function(tmpDir){
+                        console.log("DIRECTORY OBTAINED TMP");
+                        hound.tmpDirectory=tmpDir;
+                    }
+                    , 
+                    function(error){
+                        log("Error creating directory:"+JSON.stringify(error));
+                    }
+                );
+                }, 
+                function(error){
+                    log("Error creating directory:"+JSON.stringify(error));
+                }
+            );
+            }
+            function fail(evt){
+                console.log(JSON.stringify(evt));
+            }
+            
+        </script>
+
+    </body>
+</html>
