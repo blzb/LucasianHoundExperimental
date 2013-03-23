@@ -6,7 +6,9 @@ function onDeviceReady() {
     hound.validateComentario();
 };
 hound.onResume = function(){
-
+}
+hound.refreshApp =function(){
+    window.location = "index.html";   
 }
 $(document).bind(
     "pagechange",

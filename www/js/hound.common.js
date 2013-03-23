@@ -33,6 +33,15 @@ hound = {
     errores : {},
     mapInitialized : false,
     categorias : {},
+    dispositivos :{
+        ANDROID:'ANDROID',
+        IOS: 'IOS',
+        BLACKBERRY : 'BLACKBERRY',
+        WINDOWSPHONE: 'WINDOWSPHONE',
+        WINDOWS8: 'WINDOWS8',
+        OTHER: 'OTHER'
+    },
+    plataforma: '',
     validateComentario : function() {
         hound.errores = $("#comentariosForm").validate({
             submitHandler : function(form) {

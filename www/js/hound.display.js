@@ -116,7 +116,7 @@ hound.displayEncuesta = function() {
 };
 hound.displayTiendas = function(elemento) {
     $.mobile.showPageLoadingMsg();
-    //$(".contenidoListaLocalizador").hide();
+    navigator.geolocation.getCurrentPosition(hound.geolocationSuccess, hound.geolocationError,{enableHighAccuracy:false, timeout: 15000});
     $(".tituloListaLocalizador").html($(elemento).data("label"));
     $(".listListaLocalizador").html("");
     var template = Handlebars.templates['listTiendasTemplate'];
@@ -134,21 +134,16 @@ hound.displayTiendas = function(elemento) {
     $(".listListaLocalizador").append(template({
         tienda : masCercana
     }));
-
+    $(".tienda-1").hide();
     $.mobile.changePage("#listaLocalizador");
 }
 hound.displayTienda = function(idTienda) {
     if(idTienda==-1){
-        window.open(encodeURI('https://maps.google.com/'), '_system');
+        var tienda = hound.tiendas[hound.closestStore];        
     }else{
-        var tienda = hound.tiendas[idTienda];
-        var queryUrl = 'https://maps.google.com/maps?z=14&t=m&q=loc:'+tienda.latitud
-        +'+'+tienda.longitud
-        +'('+tienda.nombre
-        +':'+tienda.direccion
-        +')';    
-        window.open(encodeURI(queryUrl), '_system');
+        var tienda = hound.tiendas[idTienda];        
     }
+    window.open(hound.generateMapLink(tienda), '_system');
 /*
     $.mobile.changePage(".Mapa");
     directionsDisplay.setDirections({

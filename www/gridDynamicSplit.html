@@ -15,6 +15,8 @@
         <script src="js/hound.home.js"></script>
         <script src="js/hound.display.js"></script>
         <script src="js/hound.connection.js"></script>
+        <script src="js/hound.devices.js"></script>
+        <script src="js/hound.maps.js"></script>
         <script src="js/hound.push.js"></script>
         <script src="js-lib/jquery.validate.js"></script>
         <script src="js-lib/handlebars.js"></script>
@@ -27,8 +29,9 @@
     </head>
     <body>
         <div data-role="page" data-theme="a" id="menuPrincipal">
-            <div data-role="header"  >
-                <span class="ui-title tituloMenuPrincipal"> </span>
+            <div data-role="header">
+                <a href="" onclick="hound.refreshApp();" data-icon="refresh" data-theme="a">Recargar</a>
+                <span class="ui-title tituloMenuPrincipal"> </span>                
             </div>
             <!-- /header -->
             <div data-role="content" class="contenidoPortada" >                

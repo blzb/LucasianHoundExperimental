@@ -67,6 +67,7 @@
         margin-left:-50%; 
         text-align:right; 
         display: block;
+        height: 600px;
     }
     .mobile_only{
         display:none;
@@ -95,7 +96,9 @@
         float:left; 
         width:250px;
         margin-left:-24%; 
-        text-align:right; }
+        text-align:right; 
+        height: 700px;
+    }
 }
 
 html {

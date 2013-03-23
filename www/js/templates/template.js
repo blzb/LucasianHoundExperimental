@@ -227,15 +227,15 @@ templates['listTiendasTemplate'] = template(function (Handlebars,depth0,helpers,
   var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<li><a onclick=\"hound.displayTienda(";
+  buffer += "<li  class=\"tienda";
   stack1 = depth0.tienda;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.idTienda;
   stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
-  buffer += escapeExpression(stack1) + ");\" href=\"\" id=\"tienda";
+  buffer += escapeExpression(stack1) + "\">\r\n    <a onclick=\"hound.displayTienda(";
   stack1 = depth0.tienda;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.idTienda;
   stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
-  buffer += escapeExpression(stack1) + "\"><h3>";
+  buffer += escapeExpression(stack1) + ");\" href=\"\">\r\n        <h3>";
   stack1 = depth0.tienda;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.nombre;
   stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
@@ -243,7 +243,7 @@ templates['listTiendasTemplate'] = template(function (Handlebars,depth0,helpers,
   stack1 = depth0.tienda;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.direccion;
   stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
-  buffer += escapeExpression(stack1) + "</p> </a></li>";
+  buffer += escapeExpression(stack1) + "</p> \r\n    </a>\r\n</li>";
   return buffer;});
 templates['portadaTemplate'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers; data = data || {};
