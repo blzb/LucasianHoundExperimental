@@ -14,21 +14,24 @@ hound.generateMapLink= function(tienda){
     var queryUrl;
     switch(hound.plataforma){
         case hound.dispositivos.ANDROID:
-            queryUrl = 'https://maps.google.com/maps?z=14&t=m&q=loc:'+tienda.latitud+'+'+tienda.longitud+'('+tienda.nombre+':'+tienda.direccion+')';    
+            queryUrl = encodeURI('https://maps.google.com/maps?z=14&t=m&q=loc:'+tienda.latitud+'+'+tienda.longitud+'('+tienda.nombre+':'+tienda.direccion+')');    
+            window.open(queryUrl, '_system');
             break;
         case hound.dispositivos.IOS:
-            queryUrl = 'http://maps.apple.com/?z=14&t=m&q=loc:'+tienda.latitud+'+'+tienda.longitud+'('+tienda.nombre+':'+tienda.direccion+')';    
-            queryUrl = '';
+            queryUrl = encodeURI('http://maps.apple.com/?z=14&t=m&q=loc:'+tienda.latitud+'+'+tienda.longitud+'('+tienda.nombre+':'+tienda.direccion+')');    
+            window.open(queryUrl, '_system');
             break;
-        case hound.dispositivos.BLACKBERRY:
-            queryUrl = "javascript:blackberry.launch.newMap({'latitude':"+tienda.latitud+", 'longitude':"+tienda.longitud+"}););";
+        case hound.dispositivos.BLACKBERRY:               
+            blackberry.launch.newMap({'latitude':tienda.latitud, 'longitude':tienda.longitud});
             break;
         case hound.dispositivos.WINDOWSPHONE:
-            queryUrl='maps:cp='+tienda.longitud+'~-'+tienda.latitud+'&collection=point.'+tienda.longitud+'_'+tienda.latitud+'_'+tienda.nombre+':'+tienda.direccion;
+            queryUrl=encodeURI('maps:cp='+tienda.longitud+'~-'+tienda.latitud+'&collection=point.'+tienda.longitud+'_'+tienda.latitud+'_'+tienda.nombre+':'+tienda.direccion);
+            window.open(queryUrl, '_system');
             break;
         default:
-            queryUrl = 'https://maps.google.com/maps?z=14&t=m&q=loc:'+tienda.latitud+'+'+tienda.longitud+'('+tienda.nombre+':'+tienda.direccion+')';    
+            queryUrl = encodeURI('https://maps.google.com/maps?z=14&t=m&q=loc:'+tienda.latitud+'+'+tienda.longitud+'('+tienda.nombre+':'+tienda.direccion+')');    
+            window.open(queryUrl, '_system');
     }
-    return encodeURI(queryUrl);
+    return queryUrl;
     
 }

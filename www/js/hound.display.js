@@ -143,7 +143,7 @@ hound.displayTienda = function(idTienda) {
     }else{
         var tienda = hound.tiendas[idTienda];        
     }
-    window.open(hound.generateMapLink(tienda), '_system');
+    hound.generateMapLink(tienda);
 /*
     $.mobile.changePage(".Mapa");
     directionsDisplay.setDirections({

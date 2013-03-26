@@ -50,6 +50,8 @@
                 $.mobile.showPageLoadingMsg("a","Descargando Actualizaciones",false);
                 if(hound.isConnected()){
                     hound.updateApp();
+                }else{
+                    hound.updateCompleted();                    
                 }
             }
             function onFileSystemSuccess(fileSystem) {

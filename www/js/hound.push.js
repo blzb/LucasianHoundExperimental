@@ -32,6 +32,7 @@ hound.pushRegistration = function(){
             console.log("device not supported");
         }
     }else{
+        hound.sendDeviceInfo('-');
         console.log("Push notifications plugin not found");
     }
 }
