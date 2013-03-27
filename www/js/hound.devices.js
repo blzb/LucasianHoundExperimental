@@ -21,9 +21,6 @@ hound.generateMapLink= function(tienda){
             queryUrl = encodeURI('http://maps.apple.com/?z=14&t=m&q=loc:'+tienda.latitud+'+'+tienda.longitud+'('+tienda.nombre+':'+tienda.direccion+')');    
             window.open(queryUrl, '_system');
             break;
-        case hound.dispositivos.BLACKBERRY:               
-            blackberry.launch.newMap({'latitude':tienda.latitud, 'longitude':tienda.longitud});
-            break;
         case hound.dispositivos.WINDOWSPHONE:
             queryUrl=encodeURI('maps:cp='+tienda.longitud+'~-'+tienda.latitud+'&collection=point.'+tienda.longitud+'_'+tienda.latitud+'_'+tienda.nombre+':'+tienda.direccion);
             window.open(queryUrl, '_system');
