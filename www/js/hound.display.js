@@ -116,7 +116,7 @@ hound.displayEncuesta = function() {
 };
 hound.displayTiendas = function(elemento) {
     $.mobile.showPageLoadingMsg();
-    navigator.geolocation.getCurrentPosition(hound.geolocationSuccess, hound.geolocationError,{enableHighAccuracy:false, timeout: 15000});
+    navigator.geolocation.getCurrentPosition(hound.geolocationSuccess, hound.geolocationError,{enableHighAccuracy:false});
     $(".tituloListaLocalizador").html($(elemento).data("label"));
     $(".listListaLocalizador").html("");
     var template = Handlebars.templates['listTiendasTemplate'];
