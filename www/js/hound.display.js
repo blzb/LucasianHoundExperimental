@@ -1,3 +1,15 @@
+hound.showModal = function (){
+  $("body").append('<div class="modalWindow"/>');
+  $.mobile.showPageLoadingMsg();
+  setTimeout('hideModal()', 2000);
+}
+
+hound.hideModal =function (){
+ $(".modalWindow").remove();
+  $.mobile.hidePageLoadingMsg();
+
+}
+
 hound.displayMenuItem = function(nombre) {
     $(".texto" + nombre).text(eval("hound.portada.texto" + nombre));
     $(".titulo" + nombre).text(eval("hound.portada.texto" + nombre));
@@ -115,7 +127,7 @@ hound.displayEncuesta = function() {
     })).trigger("create");
 };
 hound.displayTiendas = function(elemento) {
-    $.mobile.showPageLoadingMsg();
+    hound.showModal();
     navigator.geolocation.getCurrentPosition(hound.geolocationSuccess, hound.geolocationError,{enableHighAccuracy:true});
     $(".tituloListaLocalizador").html($(elemento).data("label"));
     $(".listListaLocalizador").html("");

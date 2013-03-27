@@ -1,7 +1,6 @@
 hound.updateCompleted=function(){
     if(hound.isDisplayable()){
-        //$.mobile.hidePageLoadingMsg();
-        navigator.splashscreen.hide();
+        hound.hideModal();
         if(portada){
             localStorage.setItem("portada", JSON.stringify(portada))
             hound.portada = portada;
@@ -10,8 +9,7 @@ hound.updateCompleted=function(){
         window.location = "gridDynamicSplit.html";        
     }
     else{
-        //$.mobile.hidePageLoadingMsg();
-        navigator.splashscreen.hide();
+        hound.hideModal();
         $("#botonRecarga").show();
     }   
 }
@@ -59,7 +57,7 @@ hound.enviarComentario = function(intentos) {
             timeout : 30000,
             success : function(data) {
                 hound.infoAlert("Gracias","Tu comentario ha sido enviado");
-                $.mobile.hidePageLoadingMsg();
+                hound.hideModal();
                 $.mobile.changePage("#menuPrincipal");
             },
             error : function(xhr,status, error) {
@@ -384,7 +382,7 @@ hound.getTiendas = function(intentos) {
     });
 };
 hound.getCategorias = function(elemento) {
-    $.mobile.showPageLoadingMsg();
+    hound.showModal();
     alog = elemento;
     $(".tituloCatalogo").html($(elemento).data("label"));
     //$("#contenidoCatalogo").hide();
@@ -412,7 +410,7 @@ hound.getCategorias = function(elemento) {
     });
 };
 hound.getArticulos = function(idCategoria) {	
-    $.mobile.showPageLoadingMsg();
+    hound.showModal();
     //$("#contenidoArticulos").hide();
     $(".tituloArticulos").html(hound.categorias[idCategoria].nombre);
     $.ajax({
@@ -439,7 +437,7 @@ hound.getArticulos = function(idCategoria) {
     });		
 };
 hound.getArticulo= function(idArticulo){
-    $.mobile.showPageLoadingMsg();	
+    hound.showModal();
     //$("#contenidoArticulo").hide();
     $.ajax({
         type : "GET",
@@ -465,7 +463,7 @@ hound.getArticulo= function(idArticulo){
     });		
 };
 hound.getPromocionesOffline = function(elemento) {		
-    $.mobile.showPageLoadingMsg();
+    hound.showModal();
     //$("#contenidoPromociones").hide();	
     $(".tituloPromociones").html($(elemento).data("label"));
     hound.promociones=JSON.parse(localStorage.getItem("promociones"));
@@ -473,7 +471,7 @@ hound.getPromocionesOffline = function(elemento) {
     $.mobile.changePage("#Promociones");
 };				
 hound.getPromocionOffline= function(idPromocion){    
-    $.mobile.showPageLoadingMsg();	
+    hound.showModal();	
     //$("#contenidoPromocion").hide();
     hound.promocion=hound.promociones[idPromocion];
     hound.displayPromocion();
@@ -481,7 +479,7 @@ hound.getPromocionOffline= function(idPromocion){
 };	
 hound.getEncuestas= function(elemento){
     $(".tituloEncuestas").html($(elemento).data("label"));
-    $.mobile.showPageLoadingMsg();
+    hound.showModal();
     //$("#listEncuestas").hide();
     $.ajax({
         type : "GET",
@@ -508,7 +506,7 @@ hound.getEncuestas= function(elemento){
     });	
 };
 hound.getEncuesta= function(idEncuesta){
-    $.mobile.showPageLoadingMsg();	
+    hound.showModal();	
     //$("#contenidoEncuesta").hide();
     $.ajax({
         type : "GET",
@@ -558,7 +556,7 @@ hound.enviarEncuesta = function(){
         contentType : "application/json",
         success : function(data) {
             hound.infoAlert("Gracias", "Hemos recibido tus respuestas");
-            $.mobile.hidePageLoadingMsg();
+            hound.hideModal();
             $.mobile.changePage("#menuPrincipal");
         },
         error : function(xhr,status, error) {
@@ -577,7 +575,7 @@ hound.enviarEncuesta = function(){
 
 hound.getContactosOffLine = function(elemento){
     $(".tituloContactos").html($(elemento).data("label"));
-    $.mobile.showPageLoadingMsg();
+    hound.showModal();
     //$("#contenidoContactos").hide();		
     hound.contactos=JSON.parse(localStorage.getItem("contactos"));
     hound.displayContactos();

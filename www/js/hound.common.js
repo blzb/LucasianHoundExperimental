@@ -194,7 +194,7 @@ hound.errorAlert = function(mensaje){
         navigator.notification.alert(
             mensaje,
             function(){
-                $.mobile.hidePageLoadingMsg();
+                hound.hideModal();
                 $.mobile.changePage("#menuPrincipal");
             },
             'Error',
@@ -202,7 +202,7 @@ hound.errorAlert = function(mensaje){
             );        
     }else{
         alert(mensaje);
-        $.mobile.hidePageLoadingMsg();
+        hound.hideModal();
         $.mobile.changePage("#menuPrincipal");
 
     }

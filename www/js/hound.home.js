@@ -15,13 +15,12 @@ $(document).bind(
     function(e, data) {        
         if (typeof data.toPage === "object") {
             if (data.toPage.attr("id") === "Comentarios") {
-                $.mobile.showPageLoadingMsg("a",
-                    "Descargando Actualizaciones", false);
+                hound.showModal();
                 if (hound.errores) {
                     hound.errores.resetForm();
                 }
                 $('#comentariosForm').reset();
-                $.mobile.hidePageLoadingMsg();
+                hound.hideModal();
             } else if (data.toPage.attr("id") === "Catalogo") {
                 //$("#contenidoCatalogo").slideDown();
                 $(".listCatalogos").listview("refresh");
@@ -54,7 +53,7 @@ $(document).bind(
             if (data.toPage.attr("id") === "Mapa") {
 
             } else {
-                $.mobile.hidePageLoadingMsg();
+                hound.hideModal();
             }  
         }
     });

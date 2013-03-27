@@ -12,6 +12,7 @@
         <script src="js/hound.common.js"></script>
         <script src="js/hound.conf.js"></script>
         <script src="js/hound.connection.js"></script>	        
+        <script src="js/hound.display.js"></script>	        
         <script src="js/hound.push.js"></script>
         <style type="text/css" id="jqueryStyle">
         </style>
@@ -47,8 +48,8 @@
                 }
                 $("#mensajes").empty();
                 $("#botonRecarga").hide();
-                navigator.splashscreen.show();
                 //$.mobile.showPageLoadingMsg("a","Descargando Actualizaciones",false);
+                hound.showModal();
                 if(hound.isConnected()){
                     hound.updateApp();
                 }else{
