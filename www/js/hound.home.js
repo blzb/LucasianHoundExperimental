@@ -14,13 +14,13 @@ $(document).bind(
     "pagechange",
     function(e, data) {        
         if (typeof data.toPage === "object") {
+            hound.hideModal();
             if (data.toPage.attr("id") === "Comentarios") {
                 hound.showModal();
                 if (hound.errores) {
                     hound.errores.resetForm();
                 }
                 $('#comentariosForm').reset();
-                hound.hideModal();
             } else if (data.toPage.attr("id") === "Catalogo") {
                 //$("#contenidoCatalogo").slideDown();
                 $(".listCatalogos").listview("refresh");
@@ -54,7 +54,7 @@ $(document).bind(
 
             } else {
                 hound.hideModal();
-            }  
+            }              
         }
     });
 $(document).bind("pagebeforechange", function(e, data){

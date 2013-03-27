@@ -1,13 +1,13 @@
 hound.showModal = function (){
-  $("body").append('<div class="modalWindow"/>');
-  $.mobile.showPageLoadingMsg();
-  setTimeout('hideModal()', 2000);
+    $("body").append('<div class="modalWindow"/>');
+    $.mobile.showPageLoadingMsg();
+    console.log("Modal show");
 }
 
 hound.hideModal =function (){
- $(".modalWindow").remove();
-  $.mobile.hidePageLoadingMsg();
-
+    $(".modalWindow").remove();
+    $.mobile.hidePageLoadingMsg();
+    console.log("Modal hide");
 }
 
 hound.displayMenuItem = function(nombre) {
@@ -16,8 +16,11 @@ hound.displayMenuItem = function(nombre) {
 };
 hound.displayMainMenu = function() {
     $(".tituloMenuPrincipal").text(hound.config.appDisplayName);
-    $(".contenidoPortada").html(Handlebars.templates.portadaTemplate({menuItems: hound.portada.menuItems, serverURL: hound.config.remote_server_files}));
-   /* hound.displayMenuItem("Contactos");
+    $(".contenidoPortada").html(Handlebars.templates.portadaTemplate({
+        menuItems: hound.portada.menuItems, 
+        serverURL: hound.config.remote_server_files
+        }));
+/* hound.displayMenuItem("Contactos");
     hound.displayMenuItem("Localizador");
     hound.displayMenuItem("Promociones");
     if(hound.isConnected()){
@@ -128,7 +131,9 @@ hound.displayEncuesta = function() {
 };
 hound.displayTiendas = function(elemento) {
     hound.showModal();
-    navigator.geolocation.getCurrentPosition(hound.geolocationSuccess, hound.geolocationError,{enableHighAccuracy:true});
+    navigator.geolocation.getCurrentPosition(hound.geolocationSuccess, hound.geolocationError,{
+        enableHighAccuracy:true
+    });
     $(".tituloListaLocalizador").html($(elemento).data("label"));
     $(".listListaLocalizador").html("");
     var template = Handlebars.templates['listTiendasTemplate'];
