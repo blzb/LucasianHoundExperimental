@@ -47,7 +47,7 @@
                 }
                 $("#mensajes").empty();
                 $("#botonRecarga").hide();
-                $.mobile.showPageLoadingMsg("a","Descargando Actualizaciones",false);
+                //$.mobile.showPageLoadingMsg("a","Descargando Actualizaciones",false);
                 if(hound.isConnected()){
                     hound.updateApp();
                 }else{

@@ -10,6 +10,22 @@ hound.getDevice=function(){
         hound.plataforma = hound.OTHER;
     }
 }
+hound.isAndroid = function (){
+    var plataforma = device.platform.toUpperCase();
+    if(plataforma == 'ANDROID'){
+        return true;
+    }else{
+        return false;
+    }
+}
+hound.isIOS = function(){
+    var plataforma = device.platform.toUpperCase();
+    if(plataforma == 'IOS' || plataforma == 'IPHONE' || plataforma == 'IPAD'){
+        return true;
+    }else{
+        return false;
+    }
+}
 hound.generateMapLink= function(tienda){
     var queryUrl;
     switch(hound.plataforma){

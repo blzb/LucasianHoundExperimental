@@ -18,7 +18,8 @@
     <preference name="orientation"      value="default" />
     <preference name="target-device"    value="universal" />
     <preference name="fullscreen"       value="false" />
-    <preference name="splash-screen-duration" value="2500" />
+    <preference name="splash-screen-duration" value="100" />
+    <preference name="auto-hide-splash-screen" value="false" />
 
     <feature name="http://api.phonegap.com/1.0/network"/>
     <feature name="http://api.phonegap.com/1.0/device" />

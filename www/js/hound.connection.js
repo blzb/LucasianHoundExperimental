@@ -1,6 +1,7 @@
 hound.updateCompleted=function(){
     if(hound.isDisplayable()){
-        $.mobile.hidePageLoadingMsg();
+        //$.mobile.hidePageLoadingMsg();
+        navigator.splashscreen.hide();
         if(portada){
             localStorage.setItem("portada", JSON.stringify(portada))
             hound.portada = portada;
@@ -9,7 +10,8 @@ hound.updateCompleted=function(){
         window.location = "gridDynamicSplit.html";        
     }
     else{
-        $.mobile.hidePageLoadingMsg();
+        //$.mobile.hidePageLoadingMsg();
+        navigator.splashscreen.hide();
         $("#botonRecarga").show();
     }   
 }
