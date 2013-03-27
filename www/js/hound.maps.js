@@ -43,5 +43,5 @@ hound.geolocationSuccess=function(position) {
 }
 
 hound.geolocationError=function(error){
-    hound.infoLog(JSON.stringify(error));
+    hound.errorAlert(JSON.stringify(error));
 }
