@@ -43,7 +43,7 @@ hound.generateMapLink= function(tienda){
             break;
         default:
             queryUrl = encodeURI('https://maps.google.com/maps?z=14&t=m&q=loc:'+tienda.latitud+'+'+tienda.longitud+'('+tienda.nombre+':'+tienda.direccion+')');    
-            window.open(queryUrl, '_system');
+            window.open(queryUrl);
     }
     return queryUrl;
     
