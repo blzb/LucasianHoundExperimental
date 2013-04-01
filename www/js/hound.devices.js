@@ -31,18 +31,22 @@ hound.generateMapLink= function(tienda){
     switch(hound.plataforma){
         case hound.dispositivos.ANDROID:
             queryUrl = encodeURI('https://maps.google.com/maps?z=14&t=m&q=loc:'+tienda.latitud+'+'+tienda.longitud+'('+tienda.nombre+':'+tienda.direccion+')');    
+            alert("ANDROID:"+queryUrl);
             window.open(queryUrl, '_system');
             break;
         case hound.dispositivos.IOS:
             queryUrl = encodeURI('http://maps.apple.com/?z=14&t=m&q=loc:'+tienda.latitud+'+'+tienda.longitud+'('+tienda.nombre+':'+tienda.direccion+')');    
+            alert("IOS:"+queryUrl);
             window.open(queryUrl, '_system');
             break;
         case hound.dispositivos.WINDOWSPHONE:
             queryUrl=encodeURI('maps:cp='+tienda.longitud+'~-'+tienda.latitud+'&collection=point.'+tienda.longitud+'_'+tienda.latitud+'_'+tienda.nombre+':'+tienda.direccion);
+            alert("WP:"+queryUrl);
             window.open(queryUrl, '_system');
             break;
         default:
             queryUrl = encodeURI('https://maps.google.com/maps?z=14&t=m&q=loc:'+tienda.latitud+'+'+tienda.longitud+'('+tienda.nombre+':'+tienda.direccion+')');    
+            alert("DEFAULT:"+queryUrl);
             window.open(queryUrl);
     }
     return queryUrl;
