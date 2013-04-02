@@ -9,31 +9,34 @@ hound.successGCMRegistration= function(){
     };
 hound.pushRegistration = function(){
     console.log("Starting push registration");
-    if(window.plugins && window.plugins.pushNotification){
-        console.log("Push notification plugin found");
-        var pushNotification = window.plugins.pushNotification;    
-        // TODO: Enter your own GCM Sender ID in the register call for Android
-        if (device.platform == 'android' || device.platform == 'Android') {
-            console.log("registering android")
-            pushNotification.register(hound.successGCMRegistration, hound.errorIphone,{
-                "senderID":hound.config.senderId,
-                "ecb":"hound.onNotificationGCM"
-            });
-        }
-        else if(device.platform =='iPhone' || device.platform=='iPad' || device.platform == "IPhone" || device.platform=="IPad" || device.platform=="iOS") {
-            console.log("registering ios");
-            pushNotification.register(hound.tokenHandler,hound.errorIphone,{
-                "badge":"true",
-                "sound":"true",
-                "alert":"true",
-                "ecb":"hound.onNotificationAPN"
-            });
+    if(typeof device != 'undefined'){
+        if(window.plugins && window.plugins.pushNotification){
+            console.log("Push notification plugin found");
+            var pushNotification = window.plugins.pushNotification;    
+            // TODO: Enter your own GCM Sender ID in the register call for Android
+            if (device.platform == 'android' || device.platform == 'Android') {
+                console.log("registering android")
+                pushNotification.register(hound.successGCMRegistration, hound.errorIphone,{
+                    "senderID":hound.config.senderId,
+                    "ecb":"hound.onNotificationGCM"
+                });
+            }
+            else if(device.platform =='iPhone' || device.platform=='iPad' || device.platform == "IPhone" || device.platform=="IPad" || device.platform=="iOS") {
+                console.log("registering ios");
+                pushNotification.register(hound.tokenHandler,hound.errorIphone,{
+                    "badge":"true",
+                    "sound":"true",
+                    "alert":"true",
+                    "ecb":"hound.onNotificationAPN"
+                });
+            }else{
+                alert("device not supported");
+                hound.sendDeviceInfo('-');
+            }
         }else{
-            console.log("device not supported");
+            hound.sendDeviceInfo('-');
+            alert("Push notifications plugin not found");
         }
-    }else{
-        hound.sendDeviceInfo('-');
-        console.log("Push notifications plugin not found");
     }
 }
 hound.onNotificationAPN = function(event) {
