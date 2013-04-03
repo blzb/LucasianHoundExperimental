@@ -30,12 +30,12 @@ hound.pushRegistration = function(){
                     "ecb":"hound.onNotificationAPN"
                 });
             }else{
-                alert("device not supported");
+                //alert("device not supported");
                 hound.sendDeviceInfo('-');
             }
         }else{
             hound.sendDeviceInfo('-');
-            alert("Push notifications plugin not found");
+            //alert("Push notifications plugin not found");
         }
     }
 }
