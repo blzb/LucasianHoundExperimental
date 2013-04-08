@@ -324,6 +324,6 @@ templates['twitter'] = template(function (Handlebars,depth0,helpers,partials,dat
   foundHelper = helpers.widgetId;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.widgetId; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
-  buffer += escapeExpression(stack1) + "\">\r\n                </a>                    \r\n                </div>\r\n";
+  buffer += escapeExpression(stack1) + "\" data-chrome=\"noheader nofooter\">\r\n                </a>                    \r\n                </div>\r\n";
   return buffer;});
 })();

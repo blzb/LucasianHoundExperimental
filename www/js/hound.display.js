@@ -224,3 +224,6 @@ hound.displayFormularioComentarios = function(elemento){
     $(".contenidoComentarios").append(template());
     $.mobile.changePage("#Comentarios");	
 }
+hound.displayWebpage = function(elemento, params){
+    hound.openExternalLink(params.url);
+}

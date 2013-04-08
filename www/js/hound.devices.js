@@ -9,7 +9,7 @@ hound.getDevice=function(){
             hound.plataforma = hound.dispositivos.BLACKBERRY;
         }else{
             hound.plataforma = hound.dispositivos.OTHER;
-        }    
+        }
     }else{
         hound.plataforma = hound.dispositivos.OTHER;
     }
@@ -34,11 +34,11 @@ hound.generateMapLink= function(tienda){
     var queryUrl;
     switch(hound.plataforma){
         case hound.dispositivos.ANDROID:
-            queryUrl = encodeURI('https://maps.google.com/maps?z=14&t=m&q=loc:'+tienda.latitud+'+'+tienda.longitud+'('+tienda.nombre+':'+tienda.direccion+')');    
+            queryUrl = encodeURI('https://maps.google.com/maps?z=14&t=m&q=loc:'+tienda.latitud+'+'+tienda.longitud+'('+tienda.nombre+':'+tienda.direccion+')');
             window.open(queryUrl, '_system');
             break;
         case hound.dispositivos.IOS:
-            queryUrl = encodeURI('http://maps.apple.com/?z=14&t=m&q=loc:'+tienda.latitud+'+'+tienda.longitud+'('+tienda.nombre+':'+tienda.direccion+')');    
+            queryUrl = encodeURI('http://maps.apple.com/?z=14&t=m&q=loc:'+tienda.latitud+'+'+tienda.longitud+'('+tienda.nombre+':'+tienda.direccion+')');
             window.open(queryUrl, '_system');
             break;
         case hound.dispositivos.WINDOWSPHONE:
@@ -48,11 +48,33 @@ hound.generateMapLink= function(tienda){
         case hound.dispositivos.BLACKBERRY:
             var args2 = new blackberry.invoke.MapsArguments(tienda.latitud, tienda.longitud);
             blackberry.invoke.invoke(blackberry.invoke.APP_MAPS, args2);
-            break;            
+            break;
         default:
-            queryUrl = encodeURI('https://maps.google.com/maps?z=14&t=m&q=loc:'+tienda.latitud+'+'+tienda.longitud+'('+tienda.nombre+':'+tienda.direccion+')');    
+            queryUrl = encodeURI('https://maps.google.com/maps?z=14&t=m&q=loc:'+tienda.latitud+'+'+tienda.longitud+'('+tienda.nombre+':'+tienda.direccion+')');
             window.open(queryUrl);
     }
     return queryUrl;
-    
+
 }
+hound.openExternalLink= function(url){
+    switch(hound.plataforma){
+        case hound.dispositivos.ANDROID:
+            window.open(url, '_system');
+            break;
+        case hound.dispositivos.IOS:
+            window.open(url, '_system');
+            break;
+        case hound.dispositivos.WINDOWSPHONE:
+            window.open(url, '_system');
+            break;
+        case hound.dispositivos.BLACKBERRY:
+            var args = new blackberry.invoke.BrowserArguments(url);
+            blackberry.invoke.invoke(blackberry.invoke.APP_BROWSER, args);
+            break;
+        default:
+            window.open(url);
+    }
+    return queryUrl;
+
+}
+
