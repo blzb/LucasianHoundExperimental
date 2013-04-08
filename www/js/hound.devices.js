@@ -74,7 +74,6 @@ hound.openExternalLink= function(url){
         default:
             window.open(url);
     }
-    return queryUrl;
 
 }
 
