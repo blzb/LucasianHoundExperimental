@@ -9,7 +9,21 @@ hound.hideModal =function (){
     $.mobile.hidePageLoadingMsg();
     console.log("Modal hide");
 }
-
+hound.displayTwitter = function(element, params){    
+    if($(".contenidoTwitter").html().length==0){
+        $(".contenidoTwitter").html(Handlebars.templates.twitter(params));
+        !function(d,s,id){
+            var js,fjs=d.getElementsByTagName(s)[0];
+            if(!d.getElementById(id)){
+                js=d.createElement(s);
+                js.id=id;
+                js.src="http://platform.twitter.com/widgets.js";
+                fjs.parentNode.insertBefore(js,fjs);
+            }
+        }(document,"script","twitter-wjs");        
+    }
+    $.mobile.changePage("#Twitter");
+}
 hound.displayMenuItem = function(nombre) {
     $(".texto" + nombre).text(eval("hound.portada.texto" + nombre));
     $(".titulo" + nombre).text(eval("hound.portada.texto" + nombre));
@@ -19,7 +33,7 @@ hound.displayMainMenu = function() {
     $(".contenidoPortada").html(Handlebars.templates.portadaTemplate({
         menuItems: hound.portada.menuItems, 
         serverURL: hound.config.remote_server_files
-        }));
+    }));
 /* hound.displayMenuItem("Contactos");
     hound.displayMenuItem("Localizador");
     hound.displayMenuItem("Promociones");

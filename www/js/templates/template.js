@@ -315,4 +315,15 @@ templates['promocionTemplate'] = template(function (Handlebars,depth0,helpers,pa
   stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
   buffer += escapeExpression(stack1) + "</h2>\r\n";
   return buffer;});
+templates['twitter'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers; data = data || {};
+  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression;
+
+
+  buffer += "                <div style=\"text-align: center;\">\r\n                <a class=\"twitter-timeline\"\r\n                   data-widget-id=\"";
+  foundHelper = helpers.widgetId;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.widgetId; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1) + "\">\r\n                </a>                    \r\n                </div>\r\n";
+  return buffer;});
 })();
