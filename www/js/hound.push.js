@@ -9,37 +9,39 @@ hound.successGCMRegistration= function(){
     };
 hound.pushRegistration = function(){
     console.log("Starting push registration");
-    if(false){
-        if(typeof device != 'undefined'){
-            if(window.plugins && window.plugins.pushNotification){
-                console.log("Push notification plugin found");
-                var pushNotification = window.plugins.pushNotification;    
-                // TODO: Enter your own GCM Sender ID in the register call for Android
-                if (device.platform == 'android' || device.platform == 'Android') {
-                    console.log("registering android")
+    if(typeof device != 'undefined'){
+        if(window.plugins && window.plugins.pushNotification){
+            console.log("Push notification plugin found");
+            var pushNotification = window.plugins.pushNotification;    
+            // TODO: Enter your own GCM Sender ID in the register call for Android
+            if (device.platform == 'android' || device.platform == 'Android') {
+                console.log("registering android");
+                if(localStorage.regId){
+                                    
+                }else{
                     pushNotification.register(hound.successGCMRegistration, hound.errorIphone,{
                         "senderID":hound.config.senderId,
                         "ecb":"hound.onNotificationGCM"
                     });
                 }
-                else if(device.platform =='iPhone' || device.platform=='iPad' || device.platform == "IPhone" || device.platform=="IPad" || device.platform=="iOS") {
-                    console.log("registering ios");
-                    pushNotification.register(hound.tokenHandler,hound.errorIphone,{
-                        "badge":"true",
-                        "sound":"true",
-                        "alert":"true",
-                        "ecb":"hound.onNotificationAPN"
-                    });
-                }else{
-                    //alert("device not supported");
-                    hound.sendDeviceInfo('-');
-                }
-            }else{
-                hound.sendDeviceInfo('-');
-            //alert("Push notifications plugin not found");
             }
+            else if(device.platform =='iPhone' || device.platform=='iPad' || device.platform == "IPhone" || device.platform=="IPad" || device.platform=="iOS") {
+                console.log("registering ios");
+                pushNotification.register(hound.tokenHandler,hound.errorIphone,{
+                    "badge":"true",
+                    "sound":"true",
+                    "alert":"true",
+                    "ecb":"hound.onNotificationAPN"
+                });
+            }else{
+                //alert("device not supported");
+                hound.sendDeviceInfo('-');
+            }
+        }else{
+            hound.sendDeviceInfo('-');
+        //alert("Push notifications plugin not found");
         }
-    }
+    }    
 }
 hound.onNotificationAPN = function(event) {
     var pushNotification = window.plugins.pushNotification;
@@ -85,6 +87,7 @@ hound.onNotificationGCM= function(e) {
             {
                 // Your GCM push server needs to know the regID before it can push to this device
                 // here is where you might want to send it the regID for later use.
+                localStorage.setItem("regId", e.regid);
                 hound.sendDeviceInfo(e.regid);
             }
             break;
