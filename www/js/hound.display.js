@@ -227,3 +227,21 @@ hound.displayFormularioComentarios = function(elemento){
 hound.displayWebpage = function(elemento, params){
     hound.openExternalLink(params.url);
 }
+hound.displayBarcode = function(elemento, cadena){
+    $.mobile.changePage("#Barcode");
+    $(".textoCodigo").html(cadena);
+    $(".imagenCodigo").barcode({code: cadena, crc:false}, "code128",{barWidth:2, barHeight:100});
+    
+}
+hound.getDeviceBarCode = function(){
+    if(typeof device != 'undefined'){
+        return device.uuid;
+    }    
+    else{
+        var text = "";
+        var possible = "ABCDEFGH0123456789";
+        for( var i=0; i < 15; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        return text;
+    }
+}
