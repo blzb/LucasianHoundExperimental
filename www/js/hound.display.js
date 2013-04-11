@@ -222,14 +222,9 @@ hound.displayBarcode = function(elemento, cadena){
     
 }
 hound.getDeviceBarCode = function(){
-    if(typeof device != 'undefined'){
-        return device.uuid;
-    }    
-    else{
         var text = "";
         var possible = "ABCDEFGH0123456789";
-        for( var i=0; i < 15; i++ )
+        for( var i=0; i < 10; i++ )
             text += possible.charAt(Math.floor(Math.random() * possible.length));
         return text;
-    }
 }
