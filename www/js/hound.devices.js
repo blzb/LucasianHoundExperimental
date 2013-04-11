@@ -74,6 +74,27 @@ hound.openExternalLink= function(url){
         default:
             window.open(url);
     }
-
 }
+hound.getTwitter= function(params){
+    switch(hound.plataforma){
+        case hound.dispositivos.IOS:
+            window.open(params.url, '_system');
+            break;
+        default:
+            if($(".contenidoTwitter").html().length==0){
+                $(".contenidoTwitter").html(Handlebars.templates.twitter(params));
+                !function(d,s,id){
+                    var js,fjs=d.getElementsByTagName(s)[0];
+                    if(!d.getElementById(id)){
+                        js=d.createElement(s);
+                        js.id=id;
+                        js.src="http://platform.twitter.com/widgets.js";
+                        fjs.parentNode.insertBefore(js,fjs);
+                    }
+                }(document,"script","twitter-wjs");        
+            }
+            $.mobile.changePage("#Twitter");
+    }    
+}
+
 

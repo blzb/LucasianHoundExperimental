@@ -10,19 +10,7 @@ hound.hideModal =function (){
     console.log("Modal hide");
 }
 hound.displayTwitter = function(element, params){    
-    if($(".contenidoTwitter").html().length==0){
-        $(".contenidoTwitter").html(Handlebars.templates.twitter(params));
-        !function(d,s,id){
-            var js,fjs=d.getElementsByTagName(s)[0];
-            if(!d.getElementById(id)){
-                js=d.createElement(s);
-                js.id=id;
-                js.src="http://platform.twitter.com/widgets.js";
-                fjs.parentNode.insertBefore(js,fjs);
-            }
-        }(document,"script","twitter-wjs");        
-    }
-    $.mobile.changePage("#Twitter");
+    hound.getTwitter(params);
 }
 hound.displayMenuItem = function(nombre) {
     $(".texto" + nombre).text(eval("hound.portada.texto" + nombre));
@@ -224,7 +212,7 @@ hound.displayFormularioComentarios = function(elemento){
     $(".contenidoComentarios").append(template());
     $.mobile.changePage("#Comentarios");	
 }
-hound.displayWebpage = function(elemento, params){
+hound.displayExternalLink = function(elemento, params){
     hound.openExternalLink(params.url);
 }
 hound.displayBarcode = function(elemento, cadena){
