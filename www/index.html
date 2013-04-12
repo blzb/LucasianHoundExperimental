@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/jquery.mobile.structure-1.1.0.css" />
         <link rel="stylesheet" href="css/hound.css" />
+        <link rel="stylesheet" href="css/extra.css" />
         <script src="phonegap.js"></script>
         <script src="js/PushNotification.js"></script>   
         <script src="js-lib/jquery.js"></script>
@@ -22,19 +23,29 @@
         <div data-role="page" data-theme="a" id="pagina">
 
             <div data-role="content">
-                <br/>
-                <br/>
                 <center id = "mensajes" style="height: 9.5em; overflow-y: visible;"></center>
+                <form class="ui-hide-label" id="loginForm" style="display: none;">
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email" placeholder="Email" /><br/>
+                    <label for ="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Password"/><br/>
+                    <button type="submit" class="btn">Enviar</button>
+                </form>
                 <div id ="botonRecarga" style="display: none;">
                     <center>
                         <a href="" onclick="initApp();" data-role="button" data-icon="refresh" style="width: 50%;">Recargar Aplicacion</a>
                     </center>
+                </div>
+                <br/>
+                <div class="progress-bar">
+                    <span id="progress-value" style="width: 2%; text-align: center; font-weight: bold;"></span>
                 </div>
             </div><!-- /content -->
 
 
         </div><!-- /page -->
         <script type="text/javascript">
+            //$("#progress-value").width("100%");
             /*$(document).ready(function () {
                 initApp();
             });*/

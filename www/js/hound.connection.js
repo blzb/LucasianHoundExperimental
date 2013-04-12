@@ -6,7 +6,8 @@ hound.updateCompleted=function(){
             hound.portada = portada;
             hound.debugLog("LA PORTADA EN EL LOCAL STORAGE::::::::::::::::::::::::::"+JSON.stringify(hound.portada));
         }
-        window.location = "gridDynamicSplit.html";        
+        $("#progress-value").width("100%");
+        //window.location = "gridDynamicSplit.html";        
     }
     else{
         hound.hideModal();
@@ -15,11 +16,20 @@ hound.updateCompleted=function(){
 }
 hound.updateReady= function(){
     var ok = true;
+    var total = 0;
+    var completadas = 0;
     for(var key in hound.updateables){
+        total++;
         if(hound.updateables[key]<1){
-            ok = false;
+            ok = false;            
+        }else{
+            completadas++;
         }
     }
+    var porcentaje = Math.floor((completadas/total)*100)+"%";
+    console.log(porcentaje);
+    $("#progress-value").width(porcentaje);
+    $("#progress-value").html(porcentaje);
     return ok;
 }
 hound.itemUpdateCompleted = function(nombre){
