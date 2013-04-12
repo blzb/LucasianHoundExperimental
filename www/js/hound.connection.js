@@ -7,7 +7,7 @@ hound.updateCompleted=function(){
             hound.debugLog("LA PORTADA EN EL LOCAL STORAGE::::::::::::::::::::::::::"+JSON.stringify(hound.portada));
         }
         $("#progress-value").width("100%");
-        //window.location = "gridDynamicSplit.html";        
+        window.location = "gridDynamicSplit.html";        
     }
     else{
         hound.hideModal();
