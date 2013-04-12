@@ -217,9 +217,11 @@ hound.displayExternalLink = function(elemento, params){
 }
 hound.displayBarcode = function(elemento, cadena){
     $.mobile.changePage("#Barcode");
-    $(".textoCodigo").html(cadena);
-    $(".imagenCodigo").barcode({code: cadena, crc:false}, "code128",{barWidth:2, barHeight:100});
-    
+    var template = Handlebars.templates['cardTemplate'];
+    var datos = JSON.parse(localStorage.getItem("userInfo"));
+    $(".contenidoBarcode").html(template({userInfo:datos}));
+    $(".contenidoBarcode").trigger( "create");
+    //$(".imagenCodigo").barcode({code: cadena, crc:false}, "code128",{barWidth:2, barHeight:100});        
 }
 hound.getDeviceBarCode = function(){
         var text = "";

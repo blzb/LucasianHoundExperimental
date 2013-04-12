@@ -7,6 +7,7 @@ hound.updateCompleted=function(){
             hound.debugLog("LA PORTADA EN EL LOCAL STORAGE::::::::::::::::::::::::::"+JSON.stringify(hound.portada));
         }
         $("#progress-value").width("100%");
+        localStorage.setItem('userInfo','{"usuario":"Angel Pimentel","fechaRegistro":"2013-04-12T01:20:05.939Z","puntos":1500,"nivel":"gold","userId":"AB323SD321"}');
         window.location = "gridDynamicSplit.html";        
     }
     else{

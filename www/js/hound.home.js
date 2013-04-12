@@ -58,7 +58,7 @@ $(document).bind(
             }              
         }
     });
-$(document).bind("pagebeforechange", function(e, data){
+/*$(document).bind("pagebeforechange", function(e, data){
     if(data.toPage[0].id){    
         if(data.options.fromPage && data.toPage){
         if(data.options.fromPage.attr("id")!== data.toPage.attr("id")){
@@ -70,7 +70,7 @@ $(document).bind("pagebeforechange", function(e, data){
     if($.mobile.activePage){
         //$($.mobile.activePage.children()[1]).fadeOut();
     }    
-}); 
+}); */
 $(document).bind("pagebeforeshow", function(e, data){
 });
 $(document).bind("pageshow", function(e, data){

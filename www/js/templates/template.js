@@ -23,6 +23,29 @@ templates['articuloTemplate'] = template(function (Handlebars,depth0,helpers,par
   stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
   buffer += escapeExpression(stack1) + "</h2>\r\n";
   return buffer;});
+templates['cardTemplate'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers; data = data || {};
+  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression;
+
+
+  buffer += "<table>\r\n    <tr>\r\n        <td rowspan=\"4\">\r\n            <a href=\"\" data-rel=\"back\" data-role=\"button\" data-icon=\"arrow-l\" data-iconpos=\"notext\"></a>\r\n            <a href=\"\" data-rel=\"back\" data-role=\"button\" data-icon=\"arrow-r\" data-iconpos=\"notext\"></a>\r\n        </td>\r\n        <td>Usuario</td>\r\n        <td>";
+  stack1 = depth0.userInfo;
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.usuario;
+  stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
+  buffer += escapeExpression(stack1) + "</td>\r\n    </tr>\r\n    <tr>\r\n        <td>Fecha de Registro</td>\r\n        <td>";
+  stack1 = depth0.userInfo;
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.fechaRegistro;
+  stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
+  buffer += escapeExpression(stack1) + "</td>\r\n    </tr>\r\n    <tr>\r\n        <td>Puntos</td>\r\n        <td>";
+  stack1 = depth0.userInfo;
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.puntos;
+  stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
+  buffer += escapeExpression(stack1) + "</td>\r\n    </tr>\r\n    <tr>\r\n        <td>Nivel</td>\r\n        <td>";
+  stack1 = depth0.userInfo;
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.nivel;
+  stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
+  buffer += escapeExpression(stack1) + "</td>\r\n    </tr>\r\n</table>";
+  return buffer;});
 templates['comentariosForm'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers; data = data || {};
   
