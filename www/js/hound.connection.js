@@ -7,8 +7,9 @@ hound.updateCompleted=function(){
             hound.debugLog("LA PORTADA EN EL LOCAL STORAGE::::::::::::::::::::::::::"+JSON.stringify(hound.portada));
         }
         $("#progress-value").width("100%");
-        localStorage.setItem('userInfo','{"usuario":"Angel Pimentel","fechaRegistro":"2013-04-12T01:20:05.939Z","puntos":1500,"nivel":"gold","userId":"AB323SD321"}');
-        window.location = "gridDynamicSplit.html";        
+        if(hound.isLogged()){
+            window.location = "gridDynamicSplit.html";        
+        }        
     }
     else{
         hound.hideModal();
@@ -231,7 +232,6 @@ hound.downloadFile = function(url,fileName,asignee){
         hound.itemUpdateCompleted(fileName);
     }
 }
-
 hound.getPortada = function(intentos) {
     hound.infoLog("Obteniendo menu principal..");
     $.ajax({
@@ -583,7 +583,6 @@ hound.enviarEncuesta = function(){
 
     });
 }
-
 hound.getContactosOffLine = function(elemento){
     $(".tituloContactos").html($(elemento).data("label"));
     hound.showModal();
@@ -591,4 +590,69 @@ hound.getContactosOffLine = function(elemento){
     hound.contactos=JSON.parse(localStorage.getItem("contactos"));
     hound.displayContactos();
     $.mobile.changePage("#Contactos");	
+}
+hound.loginUser = function(){
+    console.log("login User");
+    if ($("#loginForm").valid()) {
+        var loginJSON = {};
+        loginJSON.email = $("#emailLogin").val();
+        loginJSON.password = $("#passwordLogin").val();
+        console.log(JSON.stringify(loginJSON));
+    /*
+        $.mobile.showPageLoadingMsg("a", "Descargando Actualizaciones",
+            false);
+        var comentarioJSON = {};
+        comentarioJSON.nombre = $("#comentarioNombre").val();
+        comentarioJSON.email = $("#comentarioEmail").val();
+        comentarioJSON.telefono = $("#comentarioTelefono").val();
+        comentarioJSON.comentario = $("#comentarioComentario").val();
+        $.ajax({
+            type : "POST",
+            url : this.config.remote_server
+            + hound.nuevas_versiones.comentarioHref,
+            data : JSON.stringify(comentarioJSON),
+            contentType : "application/json",
+            timeout : 30000,
+            success : function(data) {
+                hound.infoAlert("Gracias","Tu comentario ha sido enviado");
+                hound.hideModal();
+                $.mobile.changePage("#menuPrincipal");
+            },
+            error : function(xhr,status, error) {
+                hound.errorLog("Envio comentario:"+item.idPromocion,xhr);
+            }
+        });
+        */
+    }
+}
+hound.registerUser = function(){
+    console.log("register User");
+    if ($("#registroForm").valid()) {
+        if($("#passwordRegistro").val() == $("#confirmacionRegistro").val()){
+            var registroJSON = {};
+            registroJSON.email = $("#emailRegistro").val();
+            registroJSON.password = $("#passwordRegistro").val();
+            registroJSON.nombreCompleto = $("#nombreRegistro").val();
+        
+        $.mobile.showPageLoadingMsg("a", "Descargando Actualizaciones",
+            false);
+        $.ajax({
+            type : "POST",
+            url : hound.config.remote_server
+            + "/"+hound.config.appName+"/usuario",
+            data : JSON.stringify(registroJSON),
+            contentType : "application/json",
+            timeout : 30000,
+            success : function(data) {
+                localStorage.setItem('userInfo',JSON.stringify(data));
+                hound.updateCompleted();
+            },
+            error : function(xhr,status, error) {
+                hound.errorLog("Error en el registro");
+            }
+        });        
+        }else{
+            alert("La confirmacion no es igual");
+        }
+    }
 }

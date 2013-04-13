@@ -127,7 +127,7 @@ hound = {
             }
             hound.mapInitialized = true;
         });
-                $.mobile.changePage("#opcionesLocalizador");
+        $.mobile.changePage("#opcionesLocalizador");
 
     }
 }
@@ -213,4 +213,11 @@ hound.isDisplayable = function(){
         && localStorage.contactos && localStorage.imagenCatalogo && localStorage.imagenComentarios 
         && localStorage.imagenContactos && localStorage.imagenEncuesta
         && localStorage.imagenLocalizador && localStorage.imagenPromociones);    
+}
+hound.isLogged = function(){
+    if(localStorage.getItem('userInfo')){
+        return true;
+    }else{
+        return false;
+    }
 }

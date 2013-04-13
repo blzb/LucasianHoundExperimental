@@ -215,13 +215,18 @@ hound.displayFormularioComentarios = function(elemento){
 hound.displayExternalLink = function(elemento, params){
     hound.openExternalLink(params.url);
 }
-hound.displayBarcode = function(elemento, cadena){
-    $.mobile.changePage("#Barcode");
+hound.displayCard = function(elemento, cadena){
+    $.mobile.changePage("#Card");
     var template = Handlebars.templates['cardTemplate'];
     var datos = JSON.parse(localStorage.getItem("userInfo"));
-    $(".contenidoBarcode").html(template({userInfo:datos}));
-    $(".contenidoBarcode").trigger( "create");
+    $(".contenidoCard").html(template({userInfo:datos}));
+    $(".contenidoCard").trigger( "create");
     //$(".imagenCodigo").barcode({code: cadena, crc:false}, "code128",{barWidth:2, barHeight:100});        
+}
+hound.displayBarcode = function(elemento, cadena){
+    $.mobile.changePage("#Barcode");
+    var datos = JSON.parse(localStorage.getItem("userInfo"));
+    $(".imagenCodigo").barcode({code: datos.userId, crc:false}, "code128",{barWidth:2, barHeight:100});        
 }
 hound.getDeviceBarCode = function(){
         var text = "";

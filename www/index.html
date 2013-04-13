@@ -15,6 +15,7 @@
         <script src="js/hound.connection.js"></script>	        
         <script src="js/hound.display.js"></script>	        
         <script src="js/hound.push.js"></script>
+        <script src="js-lib/jquery.validate.js"></script>
         <style type="text/css" id="jqueryStyle">
         </style>
     </head>
@@ -22,15 +23,12 @@
 
         <div data-role="page" data-theme="a" id="pagina">
 
-            <div data-role="content">
+            <div data-role="content" >
                 <center id = "mensajes" style="height: 9.5em; overflow-y: visible;"></center>
-                <form class="ui-hide-label" id="loginForm" style="display: none;">
-                    <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" placeholder="Email" /><br/>
-                    <label for ="password">Password:</label>
-                    <input type="password" id="password" name="password" placeholder="Password"/><br/>
-                    <button type="submit" class="btn">Enviar</button>
-                </form>
+                <div style="text-align: center;" id="notLogged">
+                    <a href="#login" data-inline="true" data-rel="dialog" data-role="button">Login</a>
+                    <a href="#registro" data-inline="true" data-rel="dialog" data-role="button">Registro</a>
+                </div>
                 <div id ="botonRecarga" style="display: none;">
                     <center>
                         <a href="" onclick="initApp();" data-role="button" data-icon="refresh" style="width: 50%;">Recargar Aplicacion</a>
@@ -44,14 +42,49 @@
 
 
         </div><!-- /page -->
+        <div data-role="dialog" id="login">
+            <div data-role="header">
+                <h1>Login</h1>
+            </div>
+            <div data-role="content">
+                <form class="ui-hide-label" id="loginForm" >
+                    <label for="emailLogin">Email:</label>
+                    <input type="text" id="emailLogin" name="emailLogin" placeholder="Email" class="required email"/><br/>
+                    <label for ="passwordLogin">Password:</label>
+                    <input type="password" id="passwordLogin" name="passwordLogin" placeholder="Password" class="required"/><br/>
+                    <a href="" onclick="hound.loginUser();" data-role="button">Enviar</a>
+                </form>
+            </div>
+        </div>
+        <div data-role="dialog" id="registro">
+            <div data-role="header">
+                <h1>Registro</h1>
+            </div>
+            <div data-role="content">
+                <form class="ui-hide-label" id="registroForm" >
+                    <label for="nombreRegistro">Nombre completo:</label>
+                    <input type="text" id="nombreRegistro" name="nombreRegistro" placeholder="Nombre Completo" class="required"/><br/>
+                    <label for="emailRegistro">Email:</label>
+                    <input type="text" id="emailRegistro" name="emailRegistro" placeholder="Email" class="required email"/><br/>
+                    <label for ="passwordRegistro">Password:</label>
+                    <input type="password" id="passwordRegistro" name="passwordRegistro" placeholder="Password" class="required"/><br/>
+                    <label for ="confirmacionRegistro">Confirmacion de Password:</label>
+                    <input type="password" id="confirmacionRegistro" name="confirmacionRegistro" placeholder="Confirmacion" class="required"/><br/>
+                    <a href="" onclick="hound.registerUser();" data-role="button">Enviar</a>
+                </form>
+            </div>
+        </div>
         <script type="text/javascript">
             //$("#progress-value").width("100%");
             /*$(document).ready(function () {
                 initApp();
             });*/
+            if(hound.isLogged()){
+                $("#notLogged").hide();
+            }
             document.addEventListener("deviceready", initApp, false);
            
-            function initApp(){                
+            function initApp(){                  
                 console.log("first on device ready");
                 hound.pushRegistration();
                 if(window.requestFileSystem){
