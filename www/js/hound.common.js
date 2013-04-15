@@ -5,7 +5,7 @@ jQuery.fn.reset = function() {
 };
 var portada;
 map = new Object();
-$.mobile.defaultPageTransition = "none";
+$.mobile.defaultPageTransition = "slide";
 $.mobile.page.prototype.options.backBtnText = "Atras";
 $.mobile.page.prototype.options.addBackBtn = true;
 hound = {
