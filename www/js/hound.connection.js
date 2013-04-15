@@ -639,7 +639,7 @@ hound.registerUser = function(){
         $.ajax({
             type : "POST",
             url : hound.config.remote_server
-            + "/"+hound.config.appName+"/usuario",
+            +hound.config.appName+"/usuario",
             data : JSON.stringify(registroJSON),
             contentType : "application/json",
             timeout : 30000,
