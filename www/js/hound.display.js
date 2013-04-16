@@ -1,11 +1,11 @@
 hound.showModal = function (){
-    $("body").append('<div class="modalWindow"/>');
+    //$("body").append('<div class="modalWindow"/>');
     $.mobile.showPageLoadingMsg();
     console.log("Modal show");
 }
 
 hound.hideModal =function (){
-    $(".modalWindow").remove();
+    //$(".modalWindow").remove();
     $.mobile.hidePageLoadingMsg();
     console.log("Modal hide");
 }
