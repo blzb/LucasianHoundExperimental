@@ -107,3 +107,16 @@ html {
 .left_col_inner {padding:10px; }
 .right_col {}
 .right_col_inner {padding:10px; }
+.ui-header {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     z-index: 10000;     
+}
+.ui-content{
+    padding-top: 60px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    padding-bottom: 15px !important;
+}
