@@ -48,7 +48,7 @@ hound.isConnected= function() {
             return true;
         }
     }else{
-        return false;
+        return true;
     }
 }
 hound.enviarComentario = function(intentos) {
