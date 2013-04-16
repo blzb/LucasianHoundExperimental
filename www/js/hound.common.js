@@ -210,9 +210,7 @@ hound.errorAlert = function(mensaje){
 hound.isDisplayable = function(){
     return (localStorage.portada && localStorage.tiendas
         && localStorage.promociones && localStorage.tema
-        && localStorage.contactos && localStorage.imagenCatalogo && localStorage.imagenComentarios 
-        && localStorage.imagenContactos && localStorage.imagenEncuesta
-        && localStorage.imagenLocalizador && localStorage.imagenPromociones);    
+        && localStorage.contactos );    
 }
 hound.isLogged = function(){
     if(localStorage.getItem('userInfo')){
