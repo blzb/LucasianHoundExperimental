@@ -1,14 +1,37 @@
-<div class="gridMenu" >{{#each menuItems}}<div class="gridMenuItem" >
-                        <a href="" onclick="{{this.accion}};" class="ui-link" data-label="{{this.label}}"> 
-                            <div class="gridMenuItemImage">
-                                {{#if this.localPath}}
-                                    <img src="{{this.localPath}}" class="ui-li-icon imagenCatalogo"  />
-                                {{else}}
-                                    <img src="{{../../serverURL}}{{this.rutaImage}}" class="ui-li-icon imagenCatalogo"  /> 
-                                {{/if}}
-                            </div>
-                            <div class="gridMenuItemText">
-                                <span>{{this.label}}</span>                        
-                            </div>                        
-                        </a>
-                    </div>{{/each}}</div>
+<div class="gridMenu" >
+    {{#each menuItems}}
+    {{#if ../connected}}
+    <div class="gridMenuItem" >
+        <a href="" onclick="{{this.accion}};" class="ui-link" data-label="{{this.label}}"> 
+            <div class="gridMenuItemImage">
+                {{#if this.localPath}}
+                <img src="{{this.localPath}}" class="ui-li-icon imagenCatalogo"  />
+                {{else}}
+                <img src="{{../../../serverURL}}{{this.rutaImage}}" class="ui-li-icon imagenCatalogo"  /> 
+                {{/if}}
+            </div>
+            <div class="gridMenuItemText">
+                <span>{{this.label}}</span>                        
+            </div>                        
+        </a>
+    </div>
+    {{else}}
+    {{#if this.offline}}
+    <div class="gridMenuItem" >
+        <a href="" onclick="{{this.accion}};" class="ui-link" data-label="{{this.label}}"> 
+            <div class="gridMenuItemImage">
+                {{#if this.localPath}}
+                <img src="{{this.localPath}}" class="ui-li-icon imagenCatalogo"  />
+                {{else}}
+                <img src="{{../../../../serverURL}}{{this.rutaImage}}" class="ui-li-icon imagenCatalogo"  /> 
+                {{/if}}
+            </div>
+            <div class="gridMenuItemText">
+                <span>{{this.label}}</span>                        
+            </div>                        
+        </a>
+    </div>
+    {{/if}}
+    {{/if}}
+    {{/each}}
+</div>

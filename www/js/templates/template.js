@@ -275,49 +275,109 @@ templates['portadaTemplate'] = template(function (Handlebars,depth0,helpers,part
 function program1(depth0,data,depth1) {
   
   var buffer = "", stack1, stack2;
-  buffer += "<div class=\"gridMenuItem\" >\r\n                        <a href=\"\" onclick=\"";
+  buffer += "\r\n    ";
+  stack1 = depth1.connected;
+  stack2 = {};
+  stack1 = helpers['if'].call(depth0, stack1, {hash:stack2,inverse:self.programWithDepth(program7, data, depth1),fn:self.programWithDepth(program2, data, depth1),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\r\n    ";
+  return buffer;}
+function program2(depth0,data,depth2) {
+  
+  var buffer = "", stack1, stack2;
+  buffer += "\r\n    <div class=\"gridMenuItem\" >\r\n        <a href=\"\" onclick=\"";
   stack1 = depth0.accion;
   stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
   buffer += escapeExpression(stack1) + ";\" class=\"ui-link\" data-label=\"";
   stack1 = depth0.label;
   stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
-  buffer += escapeExpression(stack1) + "\"> \r\n                            <div class=\"gridMenuItemImage\">\r\n                                ";
+  buffer += escapeExpression(stack1) + "\"> \r\n            <div class=\"gridMenuItemImage\">\r\n                ";
   stack1 = depth0.localPath;
   stack2 = {};
-  stack1 = helpers['if'].call(depth0, stack1, {hash:stack2,inverse:self.programWithDepth(program4, data, depth1),fn:self.program(2, program2, data),data:data});
+  stack1 = helpers['if'].call(depth0, stack1, {hash:stack2,inverse:self.programWithDepth(program5, data, depth2),fn:self.program(3, program3, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\r\n                            </div>\r\n                            <div class=\"gridMenuItemText\">\r\n                                <span>";
+  buffer += "\r\n            </div>\r\n            <div class=\"gridMenuItemText\">\r\n                <span>";
   stack1 = depth0.label;
   stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
-  buffer += escapeExpression(stack1) + "</span>                        \r\n                            </div>                        \r\n                        </a>\r\n                    </div>";
+  buffer += escapeExpression(stack1) + "</span>                        \r\n            </div>                        \r\n        </a>\r\n    </div>\r\n    ";
   return buffer;}
-function program2(depth0,data) {
+function program3(depth0,data) {
   
   var buffer = "", stack1;
-  buffer += "\r\n                                    <img src=\"";
+  buffer += "\r\n                <img src=\"";
   stack1 = depth0.localPath;
   stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
-  buffer += escapeExpression(stack1) + "\" class=\"ui-li-icon imagenCatalogo\"  />\r\n                                ";
+  buffer += escapeExpression(stack1) + "\" class=\"ui-li-icon imagenCatalogo\"  />\r\n                ";
   return buffer;}
 
-function program4(depth0,data,depth2) {
+function program5(depth0,data,depth3) {
   
   var buffer = "", stack1;
-  buffer += "\r\n                                    <img src=\"";
-  stack1 = depth2.serverURL;
+  buffer += "\r\n                <img src=\"";
+  stack1 = depth3.serverURL;
   stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
   buffer += escapeExpression(stack1);
   stack1 = depth0.rutaImage;
   stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
-  buffer += escapeExpression(stack1) + "\" class=\"ui-li-icon imagenCatalogo\"  /> \r\n                                ";
+  buffer += escapeExpression(stack1) + "\" class=\"ui-li-icon imagenCatalogo\"  /> \r\n                ";
   return buffer;}
 
-  buffer += "<div class=\"gridMenu\" >";
+function program7(depth0,data,depth2) {
+  
+  var buffer = "", stack1, stack2;
+  buffer += "\r\n    ";
+  stack1 = depth0.offline;
+  stack2 = {};
+  stack1 = helpers['if'].call(depth0, stack1, {hash:stack2,inverse:self.noop,fn:self.programWithDepth(program8, data, depth2),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\r\n    ";
+  return buffer;}
+function program8(depth0,data,depth3) {
+  
+  var buffer = "", stack1, stack2;
+  buffer += "\r\n    <div class=\"gridMenuItem\" >\r\n        <a href=\"\" onclick=\"";
+  stack1 = depth0.accion;
+  stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
+  buffer += escapeExpression(stack1) + ";\" class=\"ui-link\" data-label=\"";
+  stack1 = depth0.label;
+  stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
+  buffer += escapeExpression(stack1) + "\"> \r\n            <div class=\"gridMenuItemImage\">\r\n                ";
+  stack1 = depth0.localPath;
+  stack2 = {};
+  stack1 = helpers['if'].call(depth0, stack1, {hash:stack2,inverse:self.programWithDepth(program11, data, depth3),fn:self.program(9, program9, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\r\n            </div>\r\n            <div class=\"gridMenuItemText\">\r\n                <span>";
+  stack1 = depth0.label;
+  stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
+  buffer += escapeExpression(stack1) + "</span>                        \r\n            </div>                        \r\n        </a>\r\n    </div>\r\n    ";
+  return buffer;}
+function program9(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "\r\n                <img src=\"";
+  stack1 = depth0.localPath;
+  stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
+  buffer += escapeExpression(stack1) + "\" class=\"ui-li-icon imagenCatalogo\"  />\r\n                ";
+  return buffer;}
+
+function program11(depth0,data,depth4) {
+  
+  var buffer = "", stack1;
+  buffer += "\r\n                <img src=\"";
+  stack1 = depth4.serverURL;
+  stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
+  buffer += escapeExpression(stack1);
+  stack1 = depth0.rutaImage;
+  stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
+  buffer += escapeExpression(stack1) + "\" class=\"ui-li-icon imagenCatalogo\"  /> \r\n                ";
+  return buffer;}
+
+  buffer += "<div class=\"gridMenu\" >\r\n    ";
   stack1 = depth0.menuItems;
   stack2 = {};
   stack1 = helpers.each.call(depth0, stack1, {hash:stack2,inverse:self.noop,fn:self.programWithDepth(program1, data, depth0),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</div>\r\n";
+  buffer += "\r\n</div>\r\n";
   return buffer;});
 templates['promocionTemplate'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers; data = data || {};

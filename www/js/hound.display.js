@@ -1,11 +1,11 @@
 hound.showModal = function (){
-    //$("body").append('<div class="modalWindow"/>');
+    $("body").append('<div class="modalWindow"/>');
     $.mobile.showPageLoadingMsg();
     console.log("Modal show");
 }
 
 hound.hideModal =function (){
-    //$(".modalWindow").remove();
+    $(".modalWindow").remove();
     $.mobile.hidePageLoadingMsg();
     console.log("Modal hide");
 }
@@ -20,7 +20,8 @@ hound.displayMainMenu = function() {
     $(".tituloMenuPrincipal").text(hound.config.appDisplayName);
     $(".contenidoPortada").html(Handlebars.templates.portadaTemplate({
         menuItems: hound.portada.menuItems, 
-        serverURL: hound.config.remote_server_files
+        serverURL: hound.config.remote_server_files,
+        connected : hound.isConnected()
     }));
 /* hound.displayMenuItem("Contactos");
     hound.displayMenuItem("Localizador");
@@ -226,7 +227,7 @@ hound.displayCard = function(elemento, cadena){
 hound.displayBarcode = function(elemento, cadena){
     $.mobile.changePage("#Barcode");
     var datos = JSON.parse(localStorage.getItem("userInfo"));
-    $(".imagenCodigo").barcode({code: datos.userId, crc:false}, "code128",{barWidth:2, barHeight:100});        
+    $(".imagenCodigo").barcode({code: datos.userId, crc:false}, "code39",{barWidth:2, barHeight:100});        
 }
 hound.getDeviceBarCode = function(){
         var text = "";

@@ -48,7 +48,7 @@ hound.isConnected= function() {
             return true;
         }
     }else{
-        return true;
+        return false;
     }
 }
 hound.enviarComentario = function(intentos) {
@@ -598,31 +598,34 @@ hound.loginUser = function(){
         loginJSON.email = $("#emailLogin").val();
         loginJSON.password = $("#passwordLogin").val();
         console.log(JSON.stringify(loginJSON));
-    /*
         $.mobile.showPageLoadingMsg("a", "Descargando Actualizaciones",
             false);
-        var comentarioJSON = {};
-        comentarioJSON.nombre = $("#comentarioNombre").val();
-        comentarioJSON.email = $("#comentarioEmail").val();
-        comentarioJSON.telefono = $("#comentarioTelefono").val();
-        comentarioJSON.comentario = $("#comentarioComentario").val();
         $.ajax({
             type : "POST",
-            url : this.config.remote_server
-            + hound.nuevas_versiones.comentarioHref,
-            data : JSON.stringify(comentarioJSON),
+            url : hound.config.remote_server
+            +hound.config.appName+"/login",
+            data : JSON.stringify(loginJSON),
             contentType : "application/json",
             timeout : 30000,
             success : function(data) {
-                hound.infoAlert("Gracias","Tu comentario ha sido enviado");
-                hound.hideModal();
-                $.mobile.changePage("#menuPrincipal");
+                if(data.usuario){
+                    localStorage.setItem('userInfo',JSON.stringify(data));
+                    hound.updateCompleted();
+                }else{
+                    hound.errorAlert("Login incorrecto");
+                }
             },
             error : function(xhr,status, error) {
-                hound.errorLog("Envio comentario:"+item.idPromocion,xhr);
-            }
-        });
-        */
+                hound.errorHandler(xhr, this, hound.errorPrint);
+            },
+            retryExceeded: function(){
+                hound.errorAlert(this.mensajeError+": "+this.retryLimit+" intentos fallidos, operacion abortada intenta mas tarde");
+            },
+            tryCount: 0,
+            retryLimit: 4,
+            timeout : 30000,
+            mensajeError: "Error de login"
+        });                
     }
 }
 hound.registerUser = function(){
@@ -634,23 +637,30 @@ hound.registerUser = function(){
             registroJSON.password = $("#passwordRegistro").val();
             registroJSON.nombreCompleto = $("#nombreRegistro").val();
         
-        $.mobile.showPageLoadingMsg("a", "Descargando Actualizaciones",
-            false);
-        $.ajax({
-            type : "POST",
-            url : hound.config.remote_server
-            +hound.config.appName+"/usuario",
-            data : JSON.stringify(registroJSON),
-            contentType : "application/json",
-            timeout : 30000,
-            success : function(data) {
-                localStorage.setItem('userInfo',JSON.stringify(data));
-                hound.updateCompleted();
-            },
-            error : function(xhr,status, error) {
-                hound.errorLog("Error en el registro");
-            }
-        });        
+            $.mobile.showPageLoadingMsg("a", "Descargando Actualizaciones",
+                false);
+            $.ajax({
+                type : "POST",
+                url : hound.config.remote_server
+                +hound.config.appName+"/usuario",
+                data : JSON.stringify(registroJSON),
+                contentType : "application/json",
+                timeout : 30000,
+                success : function(data) {
+                    localStorage.setItem('userInfo',JSON.stringify(data));
+                    hound.updateCompleted();
+                },
+                error : function(xhr,status, error) {
+                    hound.errorHandler(xhr, this, hound.errorPrint);
+                },
+                retryExceeded: function(){
+                    hound.errorAlert(this.mensajeError+": "+this.retryLimit+" intentos fallidos, operacion abortada intenta mas tarde");
+                },
+                tryCount: 0,
+                retryLimit: 4,
+                timeout : 30000,
+                mensajeError: "Error de registro"
+            });        
         }else{
             alert("La confirmacion no es igual");
         }
