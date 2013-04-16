@@ -9,7 +9,9 @@ hound.updateCompleted=function(){
         $("#progress-value").width("100%");
         if(hound.isLogged()){
             window.location = "gridDynamicSplit.html";        
-        }        
+        }else{
+            $("#notLogged").show();
+        }
     }
     else{
         hound.hideModal();

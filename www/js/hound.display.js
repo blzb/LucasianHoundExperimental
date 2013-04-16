@@ -16,6 +16,19 @@ hound.displayMenuItem = function(nombre) {
     $(".texto" + nombre).text(eval("hound.portada.texto" + nombre));
     $(".titulo" + nombre).text(eval("hound.portada.texto" + nombre));
 };
+hound.displayListView = function(nombre){
+    var elementos = $(nombre);
+    for(var cont = 0 ; cont < elementos.length; cont++){
+        var elemento = $(elementos[cont]);
+        if ( elemento.hasClass('ui-listview')) {
+            elemento.listview('refresh');
+        } 
+        else {
+            elemento.trigger('create');
+        }
+        
+    }
+}
 hound.displayMainMenu = function() {
     $(".tituloMenuPrincipal").text(hound.config.appDisplayName);
     $(".contenidoPortada").html(Handlebars.templates.portadaTemplate({
@@ -50,7 +63,8 @@ hound.displayCategorias = function() {
             categoria : item
         });
     }
-    $(".listCatalogos").html(contenido).trigger("create");
+    $(".listCatalogos").html(contenido);
+    hound.displayListView(".listCatalogos");
 
 };
 hound.displayContactos = function() {
@@ -63,7 +77,9 @@ hound.displayContactos = function() {
             contacto : item
         }));
     }
-
+    hound.displayListView(".listContactos");
+    
+//$(".listContactos").listview("refresh");
 };
 hound.displayArticulos = function() {
     $(".listArticulos").html("");
@@ -75,6 +91,7 @@ hound.displayArticulos = function() {
             articulo : item
         }));
     }
+    hound.displayListView(".listArticulos");
 };
 hound.displayArticulo = function() {
     $(".contenidoArticulo").html("");
@@ -86,6 +103,7 @@ hound.displayArticulo = function() {
     $(".tituloArticulo").html(hound.articulo.nombre);
 };
 hound.displayPromociones = function() {
+    
     $(".listPromociones").html("");
     var template = Handlebars.templates['listPromocionesTemplate'];
     for ( var i in hound.promociones) {
@@ -102,6 +120,7 @@ hound.displayPromociones = function() {
             }));
         }
     }
+    hound.displayListView(".listPromociones");
 };
 hound.displayPromocion = function() {
     $(".contenidoPromocion").html("");
@@ -123,6 +142,7 @@ hound.displayEncuestas = function() {
             }));
         }
     }
+    hound.displayListView(".listEncuestas");
 };
 hound.displayEncuesta = function() {
     $(".contenidoEncuesta").html("");
@@ -155,6 +175,7 @@ hound.displayTiendas = function(elemento) {
         tienda : masCercana
     }));
     $(".tienda-1").hide();
+    hound.displayListView(".listListaLocalizador");    
     $.mobile.changePage("#listaLocalizador");
 }
 hound.displayTienda = function(idTienda) {
@@ -220,19 +241,27 @@ hound.displayCard = function(elemento, cadena){
     $.mobile.changePage("#Card");
     var template = Handlebars.templates['cardTemplate'];
     var datos = JSON.parse(localStorage.getItem("userInfo"));
-    $(".contenidoCard").html(template({userInfo:datos}));
+    $(".contenidoCard").html(template({
+        userInfo:datos
+    }));
     $(".contenidoCard").trigger( "create");
-    //$(".imagenCodigo").barcode({code: cadena, crc:false}, "code128",{barWidth:2, barHeight:100});        
+//$(".imagenCodigo").barcode({code: cadena, crc:false}, "code128",{barWidth:2, barHeight:100});        
 }
 hound.displayBarcode = function(elemento, cadena){
     $.mobile.changePage("#Barcode");
     var datos = JSON.parse(localStorage.getItem("userInfo"));
-    $(".imagenCodigo").barcode({code: datos.userId, crc:false}, "code39",{barWidth:2, barHeight:100});        
+    $(".imagenCodigo").barcode({
+        code: datos.userId, 
+        crc:false
+    }, "code39",{
+        barWidth:2, 
+        barHeight:100
+    });        
 }
 hound.getDeviceBarCode = function(){
-        var text = "";
-        var possible = "ABCDEFGH0123456789";
-        for( var i=0; i < 10; i++ )
-            text += possible.charAt(Math.floor(Math.random() * possible.length));
-        return text;
+    var text = "";
+    var possible = "ABCDEFGH0123456789";
+    for( var i=0; i < 10; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    return text;
 }

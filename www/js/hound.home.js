@@ -10,7 +10,7 @@ hound.onResume = function(){
 }
 hound.refreshApp =function(){
     window.location = "index.html";   
-}
+}/*
 $(document).bind(
     "pagechange",
     function(e, data) {        
@@ -58,6 +58,7 @@ $(document).bind(
             }              
         }
     });
+*/
 /*$(document).bind("pagebeforechange", function(e, data){
     if(data.toPage[0].id){    
         if(data.options.fromPage && data.toPage){
@@ -70,9 +71,9 @@ $(document).bind(
     if($.mobile.activePage){
         //$($.mobile.activePage.children()[1]).fadeOut();
     }    
-}); */
+}); 
 $(document).bind("pagebeforeshow", function(e, data){
 });
 $(document).bind("pageshow", function(e, data){
     $(e.target.children[1]).show();
-});
+});*/
