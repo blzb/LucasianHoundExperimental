@@ -594,8 +594,9 @@ hound.getContactosOffLine = function(elemento){
     $.mobile.changePage("#Contactos");	
 }
 hound.loginUser = function(){
-    console.log("login User");
+    console.log("login User");    
     if ($("#loginForm").valid()) {
+        hound.pushRegistration();
         var loginJSON = {};
         loginJSON.email = $("#emailLogin").val();
         loginJSON.password = $("#passwordLogin").val();
@@ -635,6 +636,7 @@ hound.registerUser = function(){
     console.log("register User");
     if ($("#registroForm").valid()) {
         if($("#passwordRegistro").val() == $("#confirmacionRegistro").val()){
+            hound.pushRegistration();
             var registroJSON = {};
             registroJSON.email = $("#emailRegistro").val();
             registroJSON.password = $("#passwordRegistro").val();

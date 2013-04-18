@@ -95,8 +95,7 @@
             document.addEventListener("deviceready", initApp, false);
            
             function initApp(){                  
-                console.log("first on device ready");
-                hound.pushRegistration();
+                console.log("first on device ready");                
                 if(window.requestFileSystem){
                     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
                 }

@@ -89,6 +89,7 @@ hound.onNotificationGCM= function(e) {
                 // here is where you might want to send it the regID for later use.
                 localStorage.setItem("regId", e.regid);
                 hound.sendDeviceInfo(e.regid);
+                alert("Registratio completed");
             }
             break;
 
