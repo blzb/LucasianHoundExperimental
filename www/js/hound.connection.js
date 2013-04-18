@@ -599,6 +599,7 @@ hound.loginUser = function(){
         var loginJSON = {};
         loginJSON.email = $("#emailLogin").val();
         loginJSON.password = $("#passwordLogin").val();
+        loginJSON.dispositivoJSON = {'uuid':device.uuid,'nombre':device.name,'plataforma':device.platform,'versionOS':device.version};
         console.log(JSON.stringify(loginJSON));
         $.mobile.showPageLoadingMsg("a", "Descargando Actualizaciones",
             false);
@@ -638,6 +639,10 @@ hound.registerUser = function(){
             registroJSON.email = $("#emailRegistro").val();
             registroJSON.password = $("#passwordRegistro").val();
             registroJSON.nombreCompleto = $("#nombreRegistro").val();
+            registroJSON.sexo = $("input:radio[name=sexo]:checked").val();
+            registroJSON.nacimiento = $("#nacimiento").val();
+            registroJSON.cp = $("#cp").val();
+            registroJSON.dispositivoJSON = {'uuid':device.uuid,'nombre':device.name,'plataforma':device.platform,'versionOS':device.version};
         
             $.mobile.showPageLoadingMsg("a", "Descargando Actualizaciones",
                 false);

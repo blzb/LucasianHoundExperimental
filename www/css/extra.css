@@ -339,3 +339,7 @@ table tr td {
     padding: 10px 10px 10px 10px;
     background-image: -webkit-linear-gradient(top, #fdfdfd, #eee);
 }
+.ui-slider-switch { width: 9em }
+.sexo{
+    padding-left: 27% !important;
+}

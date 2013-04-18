@@ -61,14 +61,24 @@
                 <h1>Registro</h1>
             </div>
             <div data-role="content">
-                <form class="ui-hide-label" id="registroForm" >
-                    <label for="nombreRegistro">Nombre completo:</label>
+                <form  id="registroForm" >
+                    <label for="nombreRegistro" class="ui-hidden-accessible">Nombre completo</label>
                     <input type="text" id="nombreRegistro" name="nombreRegistro" placeholder="Nombre Completo" class="required"/><br/>
-                    <label for="emailRegistro">Email:</label>
-                    <input type="text" id="emailRegistro" name="emailRegistro" placeholder="Email" class="required email"/><br/>
-                    <label for ="passwordRegistro">Password:</label>
+                    <label for="emailRegistro" class="ui-hidden-accessible">Email</label>
+                    <input type="text" id="emailRegistro" name="emailRegistro" placeholder="Email" class="required email"/><br/>                    
+                    <label for="nacimiento" class="ui-hidden-accessible">Año de nacimiento</label>
+                    <input type="text" id="nacimiento" name="nacimiento" placeholder="Año de nacimiento" class="required"/><br/>                    
+                    <fieldset data-role="controlgroup" data-type="horizontal" class="sexo" >
+                        <input type="radio" name="sexo" id="hombre" value="hombre" checked="checked"  />
+                        <label for="hombre">Hombre</label>
+                        <input type="radio" name="sexo" id="mujer" value="mujer"  />
+                        <label for="mujer">Mujer</label>
+                    </fieldset>  
+                    <label for="cp" class="ui-hidden-accessible">Codigo Postal</label>
+                    <input type="text" id="cp" name="cp" placeholder="Codigo Postal" class="required"/><br/>
+                    <label for ="passwordRegistro" class="ui-hidden-accessible">Password:</label>
                     <input type="password" id="passwordRegistro" name="passwordRegistro" placeholder="Password" class="required"/><br/>
-                    <label for ="confirmacionRegistro">Confirmacion de Password:</label>
+                    <label for ="confirmacionRegistro" class="ui-hidden-accessible">Confirmacion de Password:</label>
                     <input type="password" id="confirmacionRegistro" name="confirmacionRegistro" placeholder="Confirmacion" class="required"/><br/>
                     <a href="" onclick="hound.registerUser();" data-role="button">Enviar</a>
                 </form>
