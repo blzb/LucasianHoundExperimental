@@ -673,7 +673,7 @@ hound.registerUser = function(){
                 mensajeError: "Error de registro"
             });        
         }else{
-            alert("La confirmacion no es igual");
+            hound.errorAlert("La confirmacion no es igual");
         }
     }
 }

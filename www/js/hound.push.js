@@ -57,7 +57,7 @@ hound.sendDeviceInfo = function(regId){
     datos.plataforma=device.platform;
     datos.versionOS=device.version;
     datos.regId=regId;
-    alert(JSON.stringify(datos));
+    //alert(JSON.stringify(datos));
     $.ajax({
         type : "POST",
         url : this.config.remote_server
@@ -90,7 +90,7 @@ hound.onNotificationGCM= function(e) {
                 // here is where you might want to send it the regID for later use.
                 localStorage.setItem("regId", e.regid);
                 hound.sendDeviceInfo(e.regid);
-                alert("Registratio completed");
+                //alert("Registratio completed");
             }
             break;
 
