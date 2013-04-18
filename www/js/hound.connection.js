@@ -247,11 +247,13 @@ hound.getPortada = function(intentos) {
             hound.itemUpdateCompleted("portada");
             hound.infoLog("Menu principal obtenido..");
             portada=JSON.parse(data);
+            /*
             for(var nombre in portada){
                 if(nombre.indexOf("image")!=-1){					
                     hound.getImagen(nombre, portada[nombre]);
                 }
-            }
+            }            
+            */
             hound.debugLog("INICIANDO DESCARGA DE IMAGENES");
             for(var i = 0; i < portada.menuItems.length; i++){
                 hound.updateables[portada.menuItems[i].id]=0;                

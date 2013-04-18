@@ -57,6 +57,7 @@ hound.sendDeviceInfo = function(regId){
     datos.plataforma=device.platform;
     datos.versionOS=device.version;
     datos.regId=regId;
+    alert(JSON.stringify(data));
     $.ajax({
         type : "POST",
         url : this.config.remote_server
