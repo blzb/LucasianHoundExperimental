@@ -58,10 +58,12 @@ hound.displayCategorias = function() {
     var contenido = "";
     for ( var i in hound.categorias) {
         var item = hound.categorias[i];
-        contenido += template({
-            baseURL : hound.config.remote_server_files,
-            categoria : item
-        });
+        if(item.numeroArticulos>0){
+            contenido += template({
+                baseURL : hound.config.remote_server_files,
+                categoria : item
+            });
+        }
     }
     $(".listCatalogos").html(contenido);
     hound.displayListView(".listCatalogos");

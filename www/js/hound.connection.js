@@ -290,7 +290,7 @@ hound.getPromociones = function(intentos) {
                 $.ajax({
                     type : "GET",	
                     async : false,
-                    url : hound.config.remote_server_files + "/promociones/"+ item.idPromocion + "/imagen.dat",
+                    url : hound.config.remote_server_files + "promociones/"+ item.idPromocion + "/imagen.dat",
                     cache : false,
                     dataType : "text",
                     success : function(data) {						
@@ -311,7 +311,7 @@ hound.getPromociones = function(intentos) {
                 $.ajax({
                     type : "GET",	
                     async : false,
-                    url : hound.config.remote_server_files + "/promociones/"+ item.idPromocion + "/icono.dat",
+                    url : hound.config.remote_server_files + "promociones/"+ item.idPromocion + "/icono.dat",
                     cache : false,
                     dataType : "text",
                     success : function(data) {						
