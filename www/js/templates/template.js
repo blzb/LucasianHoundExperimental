@@ -5,7 +5,7 @@ templates['articuloTemplate'] = template(function (Handlebars,depth0,helpers,par
   var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "		<img src=\"";
+  buffer += "<div style=\"text-align: center;\">\r\n<img src=\"";
   foundHelper = helpers.baseURL;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.baseURL; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
@@ -21,7 +21,7 @@ templates['articuloTemplate'] = template(function (Handlebars,depth0,helpers,par
   stack1 = depth0.articulo;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.precio;
   stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
-  buffer += escapeExpression(stack1) + "</h2>\r\n";
+  buffer += escapeExpression(stack1) + "</h2>\r\n</div>\r\n";
   return buffer;});
 templates['cardTemplate'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers; data = data || {};

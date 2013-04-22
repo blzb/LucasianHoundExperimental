@@ -343,3 +343,7 @@ table tr td {
 .sexo{
     padding-left: 27% !important;
 }
+
+.ui-listview .ui-li-icon {
+    left: 5px !important;
+ }
