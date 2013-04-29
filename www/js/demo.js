@@ -9,4 +9,5 @@
         {{/if}}
         <p>{{promocion.descripcion}}</p>
     </a>
+
 </li>

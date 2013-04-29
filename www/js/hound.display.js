@@ -170,7 +170,7 @@ hound.displayTiendas = function(elemento) {
     }
     var masCercana = {
         'idTienda':'-1', 
-        'nombre':'Ubicación mas cercana', 
+        'nombre':'Ubicaciï¿½n mas cercana', 
         'direccion':''
     };
     $(".listListaLocalizador").append(template({
