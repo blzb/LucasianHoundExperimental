@@ -14,6 +14,7 @@ hound.getDevice=function(){
         hound.plataforma = hound.dispositivos.OTHER;
     }
 }
+
 hound.isAndroid = function (){
     var plataforma = device.platform.toUpperCase();
     if(plataforma == 'ANDROID'){

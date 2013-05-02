@@ -7,11 +7,11 @@ hound.updateCompleted=function(){
             hound.debugLog("LA PORTADA EN EL LOCAL STORAGE::::::::::::::::::::::::::"+JSON.stringify(hound.portada));
         }
         $("#progress-value").width("100%");
-        if(hound.isLogged()){
+        //if(hound.isLogged()){
             window.location = "gridDynamicSplit.html";        
-        }else{
-            $("#notLogged").show();
-        }
+        //}else{
+        //    $("#notLogged").show();
+        //}
     }
     else{
         hound.hideModal();
@@ -597,8 +597,7 @@ hound.getContactosOffLine = function(elemento){
 }
 hound.loginUser = function(){
     console.log("login User");    
-    if ($("#loginForm").valid()) {
-        hound.pushRegistration();
+    if ($("#loginForm").valid()) {        
         var loginJSON = {};
         loginJSON.email = $("#emailLogin").val();
         loginJSON.password = $("#passwordLogin").val();
@@ -616,7 +615,7 @@ hound.loginUser = function(){
             success : function(data) {
                 if(data.usuario){
                     localStorage.setItem('userInfo',JSON.stringify(data));
-                    hound.updateCompleted();
+                     $('.ui-dialog').dialog('close');
                 }else{
                     hound.errorAlert("Login incorrecto");
                 }
@@ -637,8 +636,7 @@ hound.loginUser = function(){
 hound.registerUser = function(){
     console.log("register User");
     if ($("#registroForm").valid()) {
-        if($("#passwordRegistro").val() == $("#confirmacionRegistro").val()){
-            hound.pushRegistration();
+        if($("#passwordRegistro").val() == $("#confirmacionRegistro").val()){            
             var registroJSON = {};
             registroJSON.email = $("#emailRegistro").val();
             registroJSON.password = $("#passwordRegistro").val();
@@ -659,7 +657,7 @@ hound.registerUser = function(){
                 timeout : 30000,
                 success : function(data) {
                     localStorage.setItem('userInfo',JSON.stringify(data));
-                    hound.updateCompleted();
+                     $('.ui-dialog').dialog('close')
                 },
                 error : function(xhr,status, error) {
                     hound.errorHandler(xhr, this, hound.errorPrint);

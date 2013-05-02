@@ -7,6 +7,19 @@ hound.errorIphone=function(error) {
 };
 hound.successGCMRegistration= function(){
     };
+hound.validateDevice= function(){
+    if(typeof device == 'undefined'){
+        hound.fakeDevice();
+    }
+}    
+hound.fakeDevice= function(){
+    device = {};
+    device.platform="BROWSER";
+    device.name="BROWSER";
+    device.phonegap="2.4";
+    device.version="4.0";
+    device.uuid="sdfmapom242ee3dw4r32rfdew";
+}
 hound.pushRegistration = function(){
     console.log("Starting push registration");
     if(typeof device != 'undefined'){
@@ -41,7 +54,10 @@ hound.pushRegistration = function(){
             hound.sendDeviceInfo('-');
         //alert("Push notifications plugin not found");
         }
-    }    
+    }else{
+        hound.fakeDevice();
+        hound.sendDeviceInfo('-');
+    }   
 }
 hound.onNotificationAPN = function(event) {
     var pushNotification = window.plugins.pushNotification;
@@ -90,7 +106,7 @@ hound.onNotificationGCM= function(e) {
                 // here is where you might want to send it the regID for later use.
                 localStorage.setItem("regId", e.regid);
                 hound.sendDeviceInfo(e.regid);
-                //alert("Registratio completed");
+            //alert("Registratio completed");
             }
             break;
 

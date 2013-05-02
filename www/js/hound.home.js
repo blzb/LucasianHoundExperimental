@@ -1,5 +1,6 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
+    hound.validateDevice();
     $("#jqueryStyle").html(localStorage.getItem("tema"));	
     hound.getDevice();
     hound.loadApp();

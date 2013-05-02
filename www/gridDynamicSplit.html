@@ -263,12 +263,74 @@
         </div>
         <div data-role="page" data-theme="a" id="Barcode" style="height: 100%;">
             <div data-role="content" class="contenidoBarcode ui-btn-corner-all" style="background-color: silver;">
-                    <a href="" data-rel="back" data-role="button" data-icon="arrow-l" data-iconpos="notext"></a>
-                    <div style="text-align: center; margin: auto;  ">
-                        <div class="imagenCodigo" style="border: 10px;"></div>
-                    </div>                
+                <a href="" data-rel="back" data-role="button" data-icon="arrow-l" data-iconpos="notext"></a>
+                <div style="text-align: center; margin: auto;  ">
+                    <div class="imagenCodigo" style="border: 10px;"></div>
+                </div>                
             </div>
         </div>
+        <div data-role="dialog" id="login">
+            <div data-role="header">
+                <h1>Identificacion Necesario</h1>
+            </div>
+            <div data-role="content" style="padding-top: 15px !important;" >
+                <div data-role="controlgroup" data-type="horizontal" style="text-align: center;">
+                    <a href="" data-theme="a" onclick="$('#loginForm').show(); $('#registroForm').hide();" data-role="button" >Login</a>
+                    <a href="" data-theme="a" onclick="$('#registroForm').show(); $('#loginForm').hide();" data-role="button" >Registro</a>
+                </div>
+                <form  id="registroForm" style="display: none;" >
+                    <ul data-role="listview" data-inset="true">
+                        <li data-role="fieldcontain"  class="ui-hide-label" >
+                            <label for="nombreRegistro" >Nombre completo</label>
+                            <input type="text" id="nombreRegistro" name="nombreRegistro" placeholder="Nombre Completo" class="required"/><br/>
+                        </li>
+                        <li data-role="fieldcontain" class="ui-hide-label">
+                            <label for="emailRegistro" >Usuario</label>
+                            <input type="text" id="emailRegistro" name="emailRegistro" placeholder="Usuario" class="required"/><br/>                    
+                        </li>
+                        <li data-role="fieldcontain" class="ui-hide-label">
+                            <label for="nacimiento" >Año de nacimiento</label>
+                            <input type="text" id="nacimiento" name="nacimiento" placeholder="Año de nacimiento" class="required"/><br/>                    
+                        </li>
+                        <li data-role="fieldcontain" >                            
+                            <fieldset data-role="controlgroup" data-type="horizontal" class="sexo" >   
+                                <input type="radio" name="sexo" id="hombre" value="hombre" checked="checked"  style="visibility:hidden;" />
+                                <label for="hombre">Hombre</label>
+                                <input type="radio" name="sexo" id="mujer" value="mujer" style="visibility:hidden;"  />
+                                <label for="mujer">Mujer</label>
+                            </fieldset>  
+                        </li>
+                        <li data-role="fieldcontain" class="ui-hide-label">
+                            <label for="cp" >Codigo Postal</label>
+                            <input type="text" id="cp" name="cp" placeholder="Codigo Postal" class="required"/><br/>
+                        </li>
+                        <li data-role="fieldcontain" class="ui-hide-label">
+                            <label for ="passwordRegistro" >Password:</label>
+                            <input type="password" id="passwordRegistro" name="passwordRegistro" placeholder="Password" class="required"/><br/>
+                        </li>
+                        <li data-role="fieldcontain" class="ui-hide-label">
+                            <label for ="confirmacionRegistro" >Confirmacion de Password:</label>
+                            <input type="password" id="confirmacionRegistro" name="confirmacionRegistro" placeholder="Confirmacion" class="required"/><br/>
+                        </li>                        
+                    </ul>
+                    <a href="" data-theme="a" onclick="hound.registerUser();" data-role="button">Enviar</a>
+                </form>
+                <form class="ui-hide-label" id="loginForm"  style="display: none;" >
+                    <ul data-role="listview" data-inset="true">
+                        <li data-role="fieldcontain">
+                            <label for="emailLogin">Usuario:</label>
+                            <input type="text" id="emailLogin" name="emailLogin" placeholder="Usuario" class="required"/><br/>
+                        </li>
+                        <li data-role="fieldcontain">
+                            <label for ="passwordLogin">Password:</label>
+                            <input type="password" id="passwordLogin" name="passwordLogin" placeholder="Password" class="required"/><br/>
+                        </li>
+                    </ul>
+                    <a href="" onclick="hound.loginUser();" data-role="button" data-theme="a">Enviar</a>
+                </form>
+            </div>
+        </div>        
+        <a id="loginHref" href="#login" data-inline="true" data-rel="dialog" data-role="button" style="display: none;"></a>
         <script type="text/javascript">
             onDeviceReady();
         </script>
