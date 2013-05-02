@@ -8,6 +8,22 @@ map = new Object();
 $.mobile.defaultPageTransition = "fade";
 $.mobile.page.prototype.options.backBtnText = "Atras";
 $.mobile.page.prototype.options.addBackBtn = true;
+// provide our own console if it does not exist, huge dev aid!
+if (typeof window.console == "undefined") {
+    window.console = {
+        log: function (str) {
+            window.external.Notify(str);
+        }
+    };
+}
+
+// output any errors to console log, created above.
+window.onerror = function (msg,url,linenumber) {
+    console.log("Error ::" + msg + " in " + url + " at line " + linenumber); 
+};
+
+console.log("Installed console ! ");
+
 hound = {
     meses : new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
         "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre",
