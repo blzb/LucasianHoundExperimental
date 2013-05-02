@@ -240,13 +240,17 @@ hound.displayExternalLink = function(elemento, params){
     hound.openExternalLink(params.url);
 }
 hound.displayCard = function(elemento, cadena){
-    $.mobile.changePage("#Card");
-    var template = Handlebars.templates['cardTemplate'];
-    var datos = JSON.parse(localStorage.getItem("userInfo"));
-    $(".contenidoCard").html(template({
-        userInfo:datos
-    }));
-    $(".contenidoCard").trigger( "create");
+    if(hound.isLogged()){
+        $.mobile.changePage("#Card");
+        var template = Handlebars.templates['cardTemplate'];
+        var datos = JSON.parse(localStorage.getItem("userInfo"));
+        $(".contenidoCard").html(template({
+            userInfo:datos
+        }));
+        $(".contenidoCard").trigger( "create");
+    }else{
+        $("#loginHref").click();
+    }
 //$(".imagenCodigo").barcode({code: cadena, crc:false}, "code128",{barWidth:2, barHeight:100});        
 }
 hound.displayBarcode = function(elemento, cadena){

@@ -42,48 +42,7 @@
 
 
         </div><!-- /page -->
-        <div data-role="dialog" id="login">
-            <div data-role="header">
-                <h1>Login</h1>
-            </div>
-            <div data-role="content">
-                <form class="ui-hide-label" id="loginForm" >
-                    <label for="emailLogin">Email:</label>
-                    <input type="text" id="emailLogin" name="emailLogin" placeholder="Email" class="required email"/><br/>
-                    <label for ="passwordLogin">Password:</label>
-                    <input type="password" id="passwordLogin" name="passwordLogin" placeholder="Password" class="required"/><br/>
-                    <a href="" onclick="hound.loginUser();" data-role="button">Enviar</a>
-                </form>
-            </div>
-        </div>
-        <div data-role="dialog" id="registro">
-            <div data-role="header">
-                <h1>Registro</h1>
-            </div>
-            <div data-role="content">
-                <form  id="registroForm" >
-                    <label for="nombreRegistro" class="ui-hidden-accessible">Nombre completo</label>
-                    <input type="text" id="nombreRegistro" name="nombreRegistro" placeholder="Nombre Completo" class="required"/><br/>
-                    <label for="emailRegistro" class="ui-hidden-accessible">Email</label>
-                    <input type="text" id="emailRegistro" name="emailRegistro" placeholder="Email" class="required email"/><br/>                    
-                    <label for="nacimiento" class="ui-hidden-accessible">Año de nacimiento</label>
-                    <input type="text" id="nacimiento" name="nacimiento" placeholder="Año de nacimiento" class="required"/><br/>                    
-                    <fieldset data-role="controlgroup" data-type="horizontal" class="sexo" >
-                        <input type="radio" name="sexo" id="hombre" value="hombre" checked="checked"  />
-                        <label for="hombre">Hombre</label>
-                        <input type="radio" name="sexo" id="mujer" value="mujer"  />
-                        <label for="mujer">Mujer</label>
-                    </fieldset>  
-                    <label for="cp" class="ui-hidden-accessible">Codigo Postal</label>
-                    <input type="text" id="cp" name="cp" placeholder="Codigo Postal" class="required"/><br/>
-                    <label for ="passwordRegistro" class="ui-hidden-accessible">Password:</label>
-                    <input type="password" id="passwordRegistro" name="passwordRegistro" placeholder="Password" class="required"/><br/>
-                    <label for ="confirmacionRegistro" class="ui-hidden-accessible">Confirmacion de Password:</label>
-                    <input type="password" id="confirmacionRegistro" name="confirmacionRegistro" placeholder="Confirmacion" class="required"/><br/>
-                    <a href="" onclick="hound.registerUser();" data-role="button">Enviar</a>
-                </form>
-            </div>
-        </div>
+        
         <script type="text/javascript">
             //$("#progress-value").width("100%");
             /*$(document).ready(function () {
@@ -95,7 +54,7 @@
             document.addEventListener("deviceready", initApp, false);
            
             function initApp(){                  
-                console.log("first on device ready");                
+                console.log("first on device ready");                                
                 if(window.requestFileSystem){
                     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
                 }
@@ -103,6 +62,7 @@
                 $("#botonRecarga").hide();
                 //$.mobile.showPageLoadingMsg("a","Descargando Actualizaciones",false);
                 //hound.showModal();
+                hound.pushRegistration();
                 if(hound.isConnected()){
                     hound.updateApp();
                 }else{

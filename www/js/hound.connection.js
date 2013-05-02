@@ -7,11 +7,13 @@ hound.updateCompleted = function () {
             hound.debugLog("LA PORTADA EN EL LOCAL STORAGE::::::::::::::::::::::::::" + JSON.stringify(hound.portada));
         }
         $("#progress-value").width("100%");
-        if (hound.isLogged()) {
-            window.location = "gridDynamicSplit.html";
-        } else {
-            $("#notLogged").show();
-        }
+
+        //if(hound.isLogged()){
+        window.location = "gridDynamicSplit.html";
+        //}else{
+        //    $("#notLogged").show();
+        //}
+
     }
     else {
         hound.hideModal();
@@ -602,10 +604,11 @@ hound.getContactosOffLine = function (elemento) {
     hound.displayContactos();
     $.mobile.changePage("#Contactos");
 }
+
 hound.loginUser = function () {
     console.log("login User");
     if ($("#loginForm").valid()) {
-        hound.pushRegistration();
+
         var loginJSON = {};
         loginJSON.email = $("#emailLogin").val();
         loginJSON.password = $("#passwordLogin").val();
@@ -614,6 +617,7 @@ hound.loginUser = function () {
         $.mobile.showPageLoadingMsg("a", "Descargando Actualizaciones",
             false);
         $.ajax({
+
             type: "POST",
             url: hound.config.remote_server
                 + hound.config.appName + "/login",
@@ -623,8 +627,9 @@ hound.loginUser = function () {
             success: function (data) {
                 if (data.usuario) {
                     localStorage.setItem('userInfo', JSON.stringify(data));
-                    hound.updateCompleted();
+                    $('.ui-dialog').dialog('close');
                 } else {
+
                     hound.errorAlert("Login incorrecto");
                 }
             },
@@ -645,7 +650,6 @@ hound.registerUser = function () {
     console.log("register User");
     if ($("#registroForm").valid()) {
         if ($("#passwordRegistro").val() == $("#confirmacionRegistro").val()) {
-            hound.pushRegistration();
             var registroJSON = {};
             registroJSON.email = $("#emailRegistro").val();
             registroJSON.password = $("#passwordRegistro").val();
@@ -659,6 +663,7 @@ hound.registerUser = function () {
 
                 false);
             $.ajax({
+
                 type: "POST",
                 url: hound.config.remote_server
                     + hound.config.appName + "/usuario",
@@ -667,7 +672,8 @@ hound.registerUser = function () {
                 timeout: 30000,
                 success: function (data) {
                     localStorage.setItem('userInfo', JSON.stringify(data));
-                    hound.updateCompleted();
+                    $('.ui-dialog').dialog('close')
+
                 },
                 error: function (xhr, status, error) {
                     hound.errorHandler(xhr, this, hound.errorPrint);
@@ -716,7 +722,7 @@ hound.inicializarBanderaVisto = function (listaPromocionesServer) {
             item.visto = 0;
             listaPromocionesServer[i] = item;
         }
-    } else if (promociones !=null ){
+    } else if (promociones != null) {
         hound.infoLog("El localStrore SI tiene elementos....");
         for (var i in listaPromocionesServer) {
             var item = listaPromocionesServer[i];
@@ -725,7 +731,7 @@ hound.inicializarBanderaVisto = function (listaPromocionesServer) {
                 hound.infoLog("Nueva promocion: " + item.id + item.idPromocion);
                 item.visto = 0;
                 listaPromocionesServer[i] = item;
-            }else{
+            } else {
                 hound.infoLog("Promocion existente: " + item.idPromocion);
                 hound.infoLog("Promocion existente visto?: " + promocion.visto);
                 item.visto = promocion.visto;
