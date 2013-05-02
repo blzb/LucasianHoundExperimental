@@ -8,9 +8,7 @@ hound.errorIphone=function(error) {
 hound.successGCMRegistration= function(){
     };
 hound.validateDevice= function(){
-    if(typeof device == 'undefined'){
-        hound.fakeDevice();
-    }
+    
 }    
 hound.fakeDevice= function(){
     device = {};
