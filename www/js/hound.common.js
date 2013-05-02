@@ -12,7 +12,7 @@ $.mobile.page.prototype.options.addBackBtn = true;
 if (typeof window.console == "undefined") {
     window.console = {
         log: function (str) {
-            window.external.Notify(str);
+            alert(str);
         }
     };
 }
