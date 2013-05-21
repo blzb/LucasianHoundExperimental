@@ -45,6 +45,7 @@
 }
 
 /* iPhone, etc landscape ---- */
+/*
 @media only screen and (min-width: 480px) {
     .gridMenuItem{
         width: 24%;
@@ -77,14 +78,12 @@
         margin-top: 10%;
     }
 }
-/* iPad, tablets etc portrait ---- */
 @media only screen and (min-width: 768px) {
     .gridMenuItem{
         width: 19%;
     }
 }
 
-/* Laptops, Desktops, etc ---- */
 @media only screen and (min-width: 1025px) {
     .gridMenuItem{
         width: 162px;
@@ -108,7 +107,7 @@
         margin-top: 10%;
     }
 }
-
+*/
 html {
     height:100%; 
 }
