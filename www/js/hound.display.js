@@ -241,17 +241,56 @@ hound.displayExternalLink = function(elemento, params){
 }
 hound.displayCard = function(elemento, cadena){
     if(hound.isLogged()){
-        $.mobile.changePage("#Card");
-        var template = Handlebars.templates['cardTemplate'];
-        var datos = JSON.parse(localStorage.getItem("userInfo"));
-        $(".contenidoCard").html(template({
-            userInfo:datos
-        }));
-        $(".contenidoCard").trigger( "create");
+        if(hound.isConnected()){
+            var loginJSON = {};
+            var datos = JSON.parse(localStorage.getItem("userInfo"));
+            loginJSON.email = datos.usuario;
+            loginJSON.dispositivoJSON = {
+                'uuid': device.uuid, 
+                'nombre': device.name, 
+                'plataforma': device.platform, 
+                'versionOS': device.version
+            };
+            $.ajax({
+                type: "POST",
+                url: hound.config.remote_server
+                + hound.config.appName + "/userInfo",
+                data: JSON.stringify(loginJSON),
+                contentType: "application/json",
+                timeout: 10000,
+                success: function (data) {
+                    if (data.usuario) {
+                        localStorage.setItem('userInfo', JSON.stringify(data));
+                    } 
+                    hound.loadCard();
+                },
+                error: function (xhr, status, error) {
+                    hound.errorHandler(xhr, this, hound.errorPrint);
+                },
+                retryExceeded: function () {
+                    hound.loadCard();
+                },
+                tryCount: 0,
+                retryLimit: 2,
+                timeout: 10000,
+                mensajeError: "Error de login"
+            });
+        }else{
+            hound.loadCard();
+        }
     }else{
         $("#loginHref").click();
     }
 //$(".imagenCodigo").barcode({code: cadena, crc:false}, "code128",{barWidth:2, barHeight:100});        
+}
+hound.loadCard= function(){
+    $.mobile.changePage("#Card");
+    var template = Handlebars.templates['cardTemplate'];
+    var datos = JSON.parse(localStorage.getItem("userInfo"));
+    $(".contenidoCard").html(template({
+        userInfo:datos
+    }));
+    $(".contenidoCard").trigger( "create");
 }
 hound.displayBarcode = function(elemento, cadena){
     $.mobile.changePage("#Barcode");

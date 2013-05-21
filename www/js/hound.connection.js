@@ -442,6 +442,7 @@ hound.getArticulos = function (idCategoria) {
         success: function (data) {
             hound.articulos = JSON.parse(data);
             hound.displayArticulos();
+            hound.hideModal();
             $.mobile.changePage("#Articulos");
         },
         error: function (xhr, status, error) {
@@ -468,6 +469,7 @@ hound.getArticulo = function (idArticulo) {
         success: function (data) {
             hound.articulo = JSON.parse(data);
             hound.displayArticulo();
+            hound.hideModal();
             $.mobile.changePage("#Articulo");
         },
         error: function (xhr, status, error) {
@@ -489,6 +491,7 @@ hound.getPromocionesOffline = function (elemento) {
     $(".tituloPromociones").html($(elemento).data("label"));
     hound.promociones = JSON.parse(localStorage.getItem("promociones"));
     hound.displayPromociones();
+    hound.hideModal();
     $.mobile.changePage("#Promociones");
 };
 hound.getPromocionOffline = function (idPromocion) {
@@ -499,6 +502,7 @@ hound.getPromocionOffline = function (idPromocion) {
     hound.promocion = hound.promociones[idPromocion];
     hound.cambiarBanderaVisto(idPromocion);//Aqui se cambia la bandera a 1 (visto)
     hound.displayPromocion();
+    hound.hideModal();
     $.mobile.changePage("#Promocion");
 };
 hound.getEncuestas = function (elemento) {
@@ -514,6 +518,7 @@ hound.getEncuestas = function (elemento) {
         success: function (data) {
             hound.encuestas = JSON.parse(data);
             hound.displayEncuestas();
+            hound.hideModal();
             $.mobile.changePage("#Encuestas");
         },
         error: function (xhr, status, error) {
@@ -543,6 +548,7 @@ hound.getEncuesta = function (idEncuesta) {
             hound.encuesta = hound.encuestas[idEncuesta];
             $("#tituloEncuesta").html(hound.encuestas[idEncuesta].nombre);
             hound.displayEncuesta();
+            hound.hideModal();
             $.mobile.changePage("#Encuesta");
         },
         error: function (xhr, status, error) {
@@ -602,6 +608,7 @@ hound.getContactosOffLine = function (elemento) {
     //$("#contenidoContactos").hide();		
     hound.contactos = JSON.parse(localStorage.getItem("contactos"));
     hound.displayContactos();
+    hound.hideModal();
     $.mobile.changePage("#Contactos");
 }
 

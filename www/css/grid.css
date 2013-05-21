@@ -68,9 +68,13 @@
         text-align:right; 
         display: block;
         height: 600px;
+        margin-top: 15%;
     }
     .mobile_only{
         display:none;
+    }
+    .right_col{
+        margin-top: 10%;
     }
 }
 /* iPad, tablets etc portrait ---- */
@@ -98,6 +102,10 @@
         margin-left:-24%; 
         text-align:right; 
         height: 700px;
+        margin-top: 15%;
+    }
+    .right_col{
+        margin-top: 10%;
     }
 }
 
