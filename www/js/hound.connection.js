@@ -10,9 +10,9 @@ hound.updateCompleted = function () {
 
         //if(hound.isLogged()){
         window.location = "gridDynamicSplit.html";
-        //}else{
-        //    $("#notLogged").show();
-        //}
+    //}else{
+    //    $("#notLogged").show();
+    //}
 
     }
     else {
@@ -33,7 +33,7 @@ hound.updateReady = function () {
         }
     }
     var porcentaje = Math.floor((completadas / total) * 100) + "%";
-    console.log(porcentaje);
+    hound.infoLog(porcentaje);
     $("#progress-value").width(porcentaje);
     $("#progress-value").html(porcentaje);
     return ok;
@@ -67,7 +67,7 @@ hound.enviarComentario = function (intentos) {
         $.ajax({
             type: "POST",
             url: this.config.remote_server
-                + hound.nuevas_versiones.comentarioHref,
+            + hound.nuevas_versiones.comentarioHref,
             data: JSON.stringify(comentarioJSON),
             contentType: "application/json",
             timeout: 30000,
@@ -90,7 +90,7 @@ hound.updateApp = function (intentos) {
     $.ajax({
         type: "GET",
         url: this.config.remote_server + this.config.appName
-            + "/versiones",
+        + "/versiones",
         cache: false,
         dataType: "text",
         success: function (data) {
@@ -142,7 +142,7 @@ hound.updateApp = function (intentos) {
             if (hound.updateReady()) {
                 hound.updateCompleted();
             }
-            //hound.repeticion = setInterval("hound.verifyUpdatesCompleted()", 1000);
+        //hound.repeticion = setInterval("hound.verifyUpdatesCompleted()", 1000);
         },
         error: function (xhr, status, error) {
             hound.errorHandler(xhr, this, hound.errorPrint);
@@ -161,7 +161,7 @@ hound.getContactos = function (intentos) {
     $.ajax({
         type: "GET",
         url: this.config.remote_server
-            + hound.nuevas_versiones.contactosHref,
+        + hound.nuevas_versiones.contactosHref,
         cache: false,
         dataType: "text",
         success: function (data) {
@@ -183,11 +183,11 @@ hound.getContactos = function (intentos) {
 
     });
 };
-hound.getImagen = function (imagen, url) {
+hound.getImagen = function (imagen, url, name) {
     $.ajax({
         type: "GET",
         url: hound.config.remote_server_files
-            + url + "larger.dat",
+        + url + "larger.dat",
         cache: false,
         dataType: "text",
         success: function (data) {
@@ -226,12 +226,12 @@ hound.downloadFile = function (url, fileName, asignee) {
                         hound.infoLog("Error al descargar a temporal" + error.code);
                         hound.itemUpdateCompleted(fileName);
                     }
-                );
+                    );
             },
             function (error) {
                 hound.itemUpdateCompleted(fileName);
             }
-        );
+            );
     } else {
         hound.itemUpdateCompleted(fileName);
     }
@@ -241,27 +241,32 @@ hound.getPortada = function (intentos) {
     $.ajax({
         type: "GET",
         url: this.config.remote_server
-            + hound.nuevas_versiones.portadaHref,
+        + hound.nuevas_versiones.portadaHref,
         cache: false,
         dataType: "text",
         success: function (data) {
-            localStorage.setItem("portada", data);
-            hound.itemUpdateCompleted("portada");
+            localStorage.setItem("portada", data);            
             hound.infoLog("Menu principal obtenido..");
             portada = JSON.parse(data);
             /*
-             for(var nombre in portada){
-             if(nombre.indexOf("image")!=-1){
-             hound.getImagen(nombre, portada[nombre]);
-             }
-             }
-             */
+            for(var nombre in portada){
+                if(nombre.indexOf("image")!=-1){
+                    hound.getImagen(nombre, portada[nombre]);
+                }
+            }   
+            */
             hound.debugLog("INICIANDO DESCARGA DE IMAGENES");
+            for (var i = 0; i < portada.menuItems.length; i++) {
+                hound.updateables[portada.menuItems[i].id] = 0;
+                hound.downloadImage(portada.menuItems[i].rutaImage, portada.menuItems[i].id, portada.menuItems[i]);
+            }
+        /*
             for (var i = 0; i < portada.menuItems.length; i++) {
                 hound.updateables[portada.menuItems[i].id] = 0;
                 hound.downloadFile(portada.menuItems[i].rutaImage, portada.menuItems[i].id, portada.menuItems[i]);
             }
-
+            */
+            hound.itemUpdateCompleted("portada");
         },
         error: function (xhr, status, error) {
             hound.errorHandler(xhr, this, hound.errorPrint);
@@ -275,12 +280,37 @@ hound.getPortada = function (intentos) {
         mensajeError: "Menu Inicial"
     });
 };
+hound.downloadImage = function(ruta, id, menuItem){    
+    hound.debugLog("downloading::"+ruta);
+    $.ajax({
+        type: "GET",
+        url: hound.config.remote_server_files
+        + ruta + ".dat",
+        cache: false,
+        dataType: "text",
+        success: function (data) {
+            //localStorage.setItem(id, data);
+            menuItem.localPath = 'data:image/png;base64,'+data;
+            hound.itemUpdateCompleted(id);
+        },
+        error: function (xhr, status, error) {
+            hound.errorHandler(xhr, this, hound.errorPrint);
+        },
+        retryExceeded: function () {
+            //hound.itemUpdateCompleted(id);
+        },
+        tryCount: 0,
+        retryLimit: 4,
+        timeout: 15000,
+        mensajeError: "Imagen"
+    });
+}
 hound.getPromociones = function (intentos) {
     hound.infoLog("Obteniendo promociones..");
     $.ajax({
         type: "GET",
         url: this.config.remote_server
-            + hound.nuevas_versiones.promocionesHref,
+        + hound.nuevas_versiones.promocionesHref,
         cache: false,
         dataType: "text",
         success: function (data) {
@@ -353,35 +383,35 @@ hound.getPromociones = function (intentos) {
 hound.getTema = function (intentos) {
     hound.infoLog("Obteniendo tema..");
     $
-        .ajax({
-            type: "GET",
-            url: this.config.remote_server_files
-                + hound.nuevas_versiones.temaHref,
-            cache: false,
-            dataType: "text",
-            success: function (data) {
-                localStorage.setItem("tema", data);
-                hound.itemUpdateCompleted("tema");
-                hound.infoLog("Tema obtenido..");
-            },
-            error: function (xhr, status, error) {
-                hound.errorHandler(xhr, this, hound.errorPrint);
-            },
-            retryExceeded: function () {
-                hound.itemUpdateCompleted("tema");
-            },
-            tryCount: 0,
-            retryLimit: 4,
-            timeout: 30000,
-            mensajeError: "Tema"
-        });
+    .ajax({
+        type: "GET",
+        url: this.config.remote_server_files
+        + hound.nuevas_versiones.temaHref,
+        cache: false,
+        dataType: "text",
+        success: function (data) {
+            localStorage.setItem("tema", data);
+            hound.itemUpdateCompleted("tema");
+            hound.infoLog("Tema obtenido..");
+        },
+        error: function (xhr, status, error) {
+            hound.errorHandler(xhr, this, hound.errorPrint);
+        },
+        retryExceeded: function () {
+            hound.itemUpdateCompleted("tema");
+        },
+        tryCount: 0,
+        retryLimit: 4,
+        timeout: 30000,
+        mensajeError: "Tema"
+    });
 };
 hound.getTiendas = function (intentos) {
     hound.infoLog("Obteniendo tiendas..");
     $.ajax({
         type: "GET",
         url: this.config.remote_server
-            + hound.nuevas_versiones.tiendasHref,
+        + hound.nuevas_versiones.tiendasHref,
         cache: false,
         dataType: "text",
         success: function (data) {
@@ -409,7 +439,7 @@ hound.getCategorias = function (elemento) {
     $.ajax({
         type: "GET",
         url: this.config.remote_server
-            + hound.nuevas_versiones.categoriasHref,
+        + hound.nuevas_versiones.categoriasHref,
         cache: false,
         dataType: "text",
         success: function (data) {
@@ -436,7 +466,7 @@ hound.getArticulos = function (idCategoria) {
     $.ajax({
         type: "GET",
         url: this.config.remote_server
-            + hound.categorias[idCategoria].articulosHref,
+        + hound.categorias[idCategoria].articulosHref,
         cache: false,
         dataType: "text",
         success: function (data) {
@@ -463,7 +493,7 @@ hound.getArticulo = function (idArticulo) {
     $.ajax({
         type: "GET",
         url: this.config.remote_server
-            + hound.articulos[idArticulo].href,
+        + hound.articulos[idArticulo].href,
         cache: false,
         dataType: "text",
         success: function (data) {
@@ -512,7 +542,7 @@ hound.getEncuestas = function (elemento) {
     $.ajax({
         type: "GET",
         url: this.config.remote_server
-            + hound.nuevas_versiones.encuestasHref,
+        + hound.nuevas_versiones.encuestasHref,
         cache: false,
         dataType: "text",
         success: function (data) {
@@ -540,7 +570,7 @@ hound.getEncuesta = function (idEncuesta) {
     $.ajax({
         type: "GET",
         url: this.config.remote_server
-            + hound.encuestas[idEncuesta].preguntasHref,
+        + hound.encuestas[idEncuesta].preguntasHref,
         cache: false,
         dataType: "text",
         success: function (data) {
@@ -581,7 +611,7 @@ hound.enviarEncuesta = function () {
     $.ajax({
         type: "POST",
         url: this.config.remote_server
-            + hound.encuesta.postHref,
+        + hound.encuesta.postHref,
         data: JSON.stringify(encuestaJSON),
         contentType: "application/json",
         success: function (data) {
@@ -613,21 +643,26 @@ hound.getContactosOffLine = function (elemento) {
 }
 
 hound.loginUser = function () {
-    console.log("login User");
+    hound.infoLog("login User");
     if ($("#loginForm").valid()) {
 
         var loginJSON = {};
         loginJSON.email = $("#emailLogin").val();
         loginJSON.password = $("#passwordLogin").val();
-        loginJSON.dispositivoJSON = {'uuid': device.uuid, 'nombre': device.name, 'plataforma': device.platform, 'versionOS': device.version};
-        console.log(JSON.stringify(loginJSON));
+        loginJSON.dispositivoJSON = {
+            'uuid': device.uuid, 
+            'nombre': device.name, 
+            'plataforma': device.platform, 
+            'versionOS': device.version
+            };
+        hound.infoLog(JSON.stringify(loginJSON));
         $.mobile.showPageLoadingMsg("a", "Descargando Actualizaciones",
             false);
         $.ajax({
 
             type: "POST",
             url: hound.config.remote_server
-                + hound.config.appName + "/login",
+            + hound.config.appName + "/login",
             data: JSON.stringify(loginJSON),
             contentType: "application/json",
             timeout: 30000,
@@ -654,7 +689,7 @@ hound.loginUser = function () {
     }
 }
 hound.registerUser = function () {
-    console.log("register User");
+    hound.infoLog("register User");
     if ($("#registroForm").valid()) {
         if ($("#passwordRegistro").val() == $("#confirmacionRegistro").val()) {
             var registroJSON = {};
@@ -664,7 +699,12 @@ hound.registerUser = function () {
             registroJSON.sexo = $("input:radio[name=sexo]:checked").val();
             registroJSON.nacimiento = $("#nacimiento").val();
             registroJSON.cp = $("#cp").val();
-            registroJSON.dispositivoJSON = {'uuid': device.uuid, 'nombre': device.name, 'plataforma': device.platform, 'versionOS': device.version};
+            registroJSON.dispositivoJSON = {
+                'uuid': device.uuid, 
+                'nombre': device.name, 
+                'plataforma': device.platform, 
+                'versionOS': device.version
+                };
 
             $.mobile.showPageLoadingMsg("a", "Descargando Actualizaciones",
 
@@ -673,7 +713,7 @@ hound.registerUser = function () {
 
                 type: "POST",
                 url: hound.config.remote_server
-                    + hound.config.appName + "/usuario",
+                + hound.config.appName + "/usuario",
                 data: JSON.stringify(registroJSON),
                 contentType: "application/json",
                 timeout: 30000,

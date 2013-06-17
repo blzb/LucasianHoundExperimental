@@ -133,7 +133,7 @@ hound.infoLog= function(mensaje){
     console.log(mensaje);    
 };
 hound.debugLog= function(mensaje){
-    if(hound.debug){
+    if(hound.config.debug){
         hound.infoLog(mensaje);
     }    
 };
