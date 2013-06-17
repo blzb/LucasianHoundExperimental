@@ -720,16 +720,16 @@ hound.cambiarBanderaVisto = function (idPromocion) {
  * promociones pudieran ya estar almacenadas en el localStrore del dispositivo.
  */
 hound.inicializarBanderaVisto = function (listaPromocionesServer) {
-    var promociones = JSON.parse(localStorage.getItem("promociones"));
-
-    if (promociones == null) {//para el caso del que la lista de promociones del localStorage este vacia.
+    
+    if (localStorage.getItem("promociones")== null) {//para el caso del que la lista de promociones del localStorage este vacia.
         hound.infoLog("chin! el localStore esta vacio, jejee");
         for (var i in listaPromocionesServer) {
             var item = listaPromocionesServer[i];
             item.visto = 0;
             listaPromocionesServer[i] = item;
         }
-    } else if (promociones != null) {
+    } else if (localStorage.getItem("promociones") != null) {
+        var promociones = JSON.parse(localStorage.getItem("promociones"));
         hound.infoLog("El localStrore SI tiene elementos....");
         for (var i in listaPromocionesServer) {
             var item = listaPromocionesServer[i];
