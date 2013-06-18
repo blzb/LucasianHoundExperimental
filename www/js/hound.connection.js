@@ -668,7 +668,7 @@ hound.loginUser = function () {
             timeout: 30000,
             success: function (data) {
                 if(!data){
-                    alert("Login incorrecto");
+                    hound.errorAlert("Login incorrecto");
                 }else{
                     localStorage.setItem('userInfo', JSON.stringify(data));
                     $('.ui-dialog').dialog('close');

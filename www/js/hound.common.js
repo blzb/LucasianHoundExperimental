@@ -171,7 +171,9 @@ hound.errorPrint = function(mensaje){
     console.log(mensaje);
 }
 hound.infoAlert = function(titulo, mensaje){
-    if(navigator.notification){
+    if(!navigator.notification){
+        alert(mensaje);
+    }else{
         navigator.notification.alert(
             mensaje,
             function(){
@@ -179,12 +181,15 @@ hound.infoAlert = function(titulo, mensaje){
             titulo,
             'OK' 
             );  
-    }else{
-        alert(mensaje);
+        
     }
 };
 hound.errorAlert = function(mensaje){	
-    if(navigator.notification){
+    if(!navigator.notification){
+        alert(mensaje);
+        hound.hideModal();
+        $.mobile.changePage("#menuPrincipal");
+    }else{
         navigator.notification.vibrate(500);
         navigator.notification.alert(
             mensaje,
@@ -194,11 +199,7 @@ hound.errorAlert = function(mensaje){
             },
             'Error',
             'OK' 
-            );        
-    }else{
-        alert(mensaje);
-        hound.hideModal();
-        $.mobile.changePage("#menuPrincipal");
+            );              
 
     }
 };
