@@ -130,7 +130,9 @@ hound.infoLog= function(mensaje){
     /*if($("#mensajes").length>0){
         $("#mensajes").prepend(mensaje+"<hr/>");
     }*/
-    console.log(mensaje);    
+    //console.log(mensaje);    
+    hound.infoAlert("info", mensaje);
+    
 };
 hound.debugLog= function(mensaje){
     if(hound.config.debug){
@@ -168,7 +170,8 @@ hound.errorHandler= function(error, params, errorDisplay){
 };
 hound.errorPrint = function(mensaje){
     //$("#mensajes").prepend('<span style="color:red">'+mensaje+' <br/></span>');
-    console.log(mensaje);
+    //console.log(mensaje);
+    hound.errorAlert(mensaje);
 }
 hound.infoAlert = function(titulo, mensaje){
     if(!navigator.notification){

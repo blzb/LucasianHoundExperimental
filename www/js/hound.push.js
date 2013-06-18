@@ -1,9 +1,8 @@
 hound.tokenHandler=function(msg) {
-    console.log("Token Handler " + msg);
     hound.sendDeviceInfo(msg);
 };
 hound.errorIphone=function(error) {
-    console.log(JSON.stringify(error));
+    hound.errorAlert(JSON.stringify(error));
 };
 hound.successGCMRegistration= function(){
     };
@@ -19,14 +18,14 @@ hound.fakeDevice= function(){
     device.uuid="sdfmapom242ee3dw4r32rfdew";
 }
 hound.pushRegistration = function(){
-    console.log("Starting push registration");
+    hound.infoLog("Starting push registration");
     if(typeof device != 'undefined'){
         if(window.plugins && window.plugins.pushNotification){
-            console.log("Push notification plugin found");
+            hound.infoLog("Push notification plugin found");
             var pushNotification = window.plugins.pushNotification;    
             // TODO: Enter your own GCM Sender ID in the register call for Android
             if (device.platform == 'android' || device.platform == 'Android') {
-                console.log("registering android");
+                hound.infoLog("registering android");
                 if(localStorage.regId){
                                     
                 }else{
@@ -37,7 +36,7 @@ hound.pushRegistration = function(){
                 }
             }
             else if(device.platform =='iPhone' || device.platform=='iPad' || device.platform == "IPhone" || device.platform=="IPad" || device.platform=="iOS") {
-                console.log("registering ios");
+                hound.infoLog("registering ios");
                 pushNotification.register(hound.tokenHandler,hound.errorIphone,{
                     "badge":"true",
                     "sound":"true",
@@ -118,11 +117,11 @@ hound.onNotificationGCM= function(e) {
             break;
 
         case 'error':
-            console.log('GCM error = '+e.msg);
+            hound.infoLog('GCM error = '+e.msg);
             break;
 
         default:
-            console.log('An unknown GCM event has occurred');
+            hound.infoLog('An unknown GCM event has occurred');
             break;
     }
 }

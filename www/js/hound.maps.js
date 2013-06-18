@@ -20,13 +20,11 @@ hound.getClosest=function(latitud, longitud){
             var posicionMinima;
             var distanciaMinima=99999999999999999999999;
             for(var i = 0; i<resultados.length; i++){
-                console.log(resultados[i].distance.value);
                 if(resultados[i].distance.value<distanciaMinima){
                     distanciaMinima=resultados[i].distance.value;
                     posicionMinima=i;
                 }                
             }
-            console.log("EL MAS PEQUE:"+distanciaMinima+".."+posicionMinima);
             for(var j in hound.tiendas){
                 if(hound.tiendas[j].matrixPosition==posicionMinima){
                     hound.closestStore = j;                                
