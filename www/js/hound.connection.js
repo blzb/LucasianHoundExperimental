@@ -667,13 +667,20 @@ hound.loginUser = function () {
             contentType: "application/json",
             timeout: 30000,
             success: function (data) {
-                hound.infoLog("Data received:"+data);
+                if(!data){
+                    hound.infoLog("no hay datos");
+                }else{
+                    hound.infoLog("Si hay datos");
+                }
+               /* 
+                dhound.infoLog("Data received:"+data);
                 if (data.length >0 ) {
                     localStorage.setItem('userInfo', JSON.stringify(data));
                     $('.ui-dialog').dialog('close');
                 } else {
                     hound.errorAlert("Login incorrecto");
                 }
+                */
             },
             error: function (xhr, status, error) {
                 hound.errorHandler(xhr, this, hound.errorPrint);
