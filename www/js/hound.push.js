@@ -85,7 +85,7 @@ hound.sendDeviceInfo = function(regId){
             hound.errorHandler(xhr, this, hound.errorPrint);
         },
         retryExceeded: function(){
-            hound.errorAlert(this.mensajeError+": "+this.retryLimit+" intentos fallidos, operacion abortada intenta mas tarde");
+            hound.infoLog(this.mensajeError+": "+this.retryLimit+" intentos fallidos, operacion abortada intenta mas tarde");
         },
         tryCount: 0,
         retryLimit: 4,
