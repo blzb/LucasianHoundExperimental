@@ -48,6 +48,8 @@
             /*$(document).ready(function () {
                 initApp();
             });*/
+    alert("app init");
+    /*
             if(hound.isLogged()){
                 $("#notLogged").hide();
             }
@@ -55,13 +57,8 @@
            
             function initApp(){                  
                 console.log("first on device ready");                                
-                /*if(window.requestFileSystem){
-                    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
-                }*/
                 $("#mensajes").empty();
                 $("#botonRecarga").hide();
-                //$.mobile.showPageLoadingMsg("a","Descargando Actualizaciones",false);
-                //hound.showModal();
                 hound.pushRegistration();
                 if(hound.isConnected()){
                     hound.updateApp();
@@ -94,7 +91,7 @@
             function fail(evt){
                 console.log(JSON.stringify(evt));
             }
-            initApp();
+            initApp();*/
         </script>
 
     </body>
