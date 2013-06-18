@@ -186,7 +186,7 @@ hound.infoAlert = function(titulo, mensaje){
 };
 hound.errorAlert = function(mensaje){	
     if(!navigator.notification){
-        alert(mensaje);
+         alert(mensaje);
         hound.hideModal();
         $.mobile.changePage("#menuPrincipal");
     }else{
