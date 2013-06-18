@@ -7,15 +7,15 @@
         <link rel="stylesheet" href="css/hound.css" />
         <link rel="stylesheet" href="css/extra.css" />
         <script src="phonegap.js"></script>
-        <script src="js/PushNotification.js"></script>   
         <script src="js-lib/jquery.js"></script>
         <script src="js-lib/jquery.mobile.js"></script>
+        <!--script src="js/PushNotification.js"></script>           
         <script src="js/hound.common.js"></script>
         <script src="js/hound.conf.js"></script>
         <script src="js/hound.connection.js"></script>	        
         <script src="js/hound.display.js"></script>	        
         <script src="js/hound.push.js"></script>
-        <script src="js-lib/jquery.validate.js"></script>
+        <script src="js-lib/jquery.validate.js"></script-->
         <style type="text/css" id="jqueryStyle">
         </style>
     </head>
@@ -24,6 +24,7 @@
         <div data-role="page" data-theme="a" id="pagina">
 
             <div data-role="content" >
+                <p id="mensaje">HOLA MUNDO:</p>
                 <center id = "mensajes" style="height: 9.5em; overflow-y: visible;"></center>
                 <div style="text-align: center; display: none;" id="notLogged">
                     <a href="#login" data-inline="true" data-rel="dialog" data-role="button">Login</a>
@@ -36,7 +37,7 @@
                 </div>
                 <br/>
                 <div class="progress-bar">
-                    <span id="progress-value" style="width: 2%; text-align: center; font-weight: bold;"></span>
+                    <span id="progress-value" style="width: 0%; text-align: center; font-weight: bold;"></span>
                 </div>
             </div><!-- /content -->
 
@@ -48,7 +49,7 @@
             /*$(document).ready(function () {
                 initApp();
             });*/
-    
+    /*
             if(hound.isLogged()){
                 $("#notLogged").hide();
             }
@@ -90,6 +91,7 @@
             function fail(evt){
                 hound.infoLog(JSON.stringify(evt));
             }
+     */
             //initApp();
         </script>
 
