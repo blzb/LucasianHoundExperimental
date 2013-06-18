@@ -667,7 +667,8 @@ hound.loginUser = function () {
             contentType: "application/json",
             timeout: 30000,
             success: function (data) {
-                if (data) {
+                hound.infoLog("Data received:"+data);
+                if (data.length >0 ) {
                     localStorage.setItem('userInfo', JSON.stringify(data));
                     $('.ui-dialog').dialog('close');
                 } else {
