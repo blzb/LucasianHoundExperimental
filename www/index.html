@@ -10,7 +10,7 @@
         <script src="js-lib/jquery.js"></script>
         <script src="js-lib/jquery.mobile.js"></script>
         <script src="js-lib/jQuery.XDomainRequest.js"></script>
-        <!--script src="js/PushNotification.js"></script-->           
+        <script src="js/PushNotification.js"></script>           
         <script src="js/hound.common.js"></script>
         <script src="js/hound.conf.js"></script>
         <script src="js/hound.connection.js"></script>	        
@@ -25,7 +25,7 @@
         <div data-role="page" data-theme="a" id="pagina">
 
             <div data-role="content" >
-                <p id="mensajes">HOLA MUNDO:</p>
+                <!--p id="mensajes">HOLA MUNDO:</p-->
                 <center id = "mensajes" style="height: 9.5em; overflow-y: visible;"></center>
                 <div style="text-align: center; display: none;" id="notLogged">
                     <a href="#login" data-inline="true" data-rel="dialog" data-role="button">Login</a>
@@ -55,7 +55,7 @@
             if(hound.isLogged()){
                 $("#notLogged").hide();
             }
-            //document.addEventListener("deviceready", initApp, false);
+            document.addEventListener("deviceready", initApp, false);
            
             function initApp(){                  
                 hound.infoLog("first on device ready");                                
@@ -94,7 +94,7 @@
                 hound.infoLog(JSON.stringify(evt));
             }
      
-            initApp();
+            //initApp();
         </script>
 
     </body>

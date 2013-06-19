@@ -127,16 +127,16 @@ hound = {
     }
 }
 hound.infoLog= function(mensaje){
-    if($("#mensajes").length>0){
-        $("#mensajes").append(mensaje+"<hr/>");
-    }
-    //console.log(mensaje);    
+   // if($("#mensajes").length>0){
+   //     $("#mensajes").append(mensaje+"<hr/>");
+   // }
+    console.log(mensaje);    
     //hound.infoAlert("info", mensaje);
     
 };
 hound.errorPrint = function(mensaje){
-    $("#mensajes").append('<span style="color:red">'+mensaje+' <br/></span>');
-    //console.log(mensaje);
+   // $("#mensajes").append('<span style="color:red">'+mensaje+' <br/></span>');
+    console.log(mensaje);
     //hound.errorAlert(mensaje);
 }
 hound.debugLog= function(mensaje){
