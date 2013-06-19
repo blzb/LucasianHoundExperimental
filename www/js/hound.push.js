@@ -73,6 +73,7 @@ hound.sendDeviceInfo = function(regId){
     //alert(JSON.stringify(datos));
     $.ajax({
         type : "POST",
+        crossDomain: true,
         url : this.config.remote_server
         + this.config.appName +"/dispositivo",
         data : JSON.stringify(datos),
