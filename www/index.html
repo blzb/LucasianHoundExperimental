@@ -55,7 +55,7 @@
             if(hound.isLogged()){
                 $("#notLogged").hide();
             }
-            document.addEventListener("deviceready", initApp, false);
+            //document.addEventListener("deviceready", initApp, false);
            
             function initApp(){                  
                 hound.infoLog("first on device ready");                                
@@ -94,7 +94,7 @@
                 hound.infoLog(JSON.stringify(evt));
             }
      
-            //initApp();
+            initApp();
         </script>
 
     </body>
