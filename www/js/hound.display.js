@@ -1,3 +1,4 @@
+
 hound.showModal = function (){
     //$("body").append('<div class="modalWindow"/>');
     $.mobile.showPageLoadingMsg();
@@ -291,9 +292,17 @@ hound.loadCard= function(){
         userInfo:datos
     }));
     $(".contenidoCard").trigger( "create");
+    $(".imagenCodigo").barcode({
+        code: datos.userId, 
+        crc:false
+    }, "code39",{
+        barWidth:2, 
+        barHeight:100
+    });        
+
 }
 hound.displayBarcode = function(elemento, cadena){
-    $.mobile.changePage("#Barcode");
+    //$.mobile.changePage("#Barcode");
     var datos = JSON.parse(localStorage.getItem("userInfo"));
     $(".imagenCodigo").barcode({
         code: datos.userId, 

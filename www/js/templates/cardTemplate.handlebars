@@ -1,22 +1,44 @@
-<table>
-    <tr>
-        <td rowspan="4">
-            <a href="" data-rel="back" data-role="button" data-icon="arrow-l" data-iconpos="notext"></a>
-            <a href="" onclick = "hound.displayBarcode();" data-role="button" data-inline="true">Codigo</a>
-        </td>
-        <td>Usuario</td>
-        <td>{{userInfo.usuario}}</td>
-    </tr>
-    <tr>
-        <td>Fecha de Registro</td>
-        <td>{{userInfo.fechaRegistro}}</td>
-    </tr>
-    <tr>
-        <td>Puntos</td>
-        <td>{{userInfo.puntos}}</td>
-    </tr>
-    <tr>
-        <td>Nivel</td>
-        <td>{{userInfo.nivel}}</td>
-    </tr>
-</table>
+<ul class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+
+    <li class="ui-li ui-li-divider ui-bar-a ui-corner-top">
+        Usuario
+    </li>
+    <li class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-a">
+        <div class="ui-btn-inner ui-li">
+            <div class="ui-btn-text">
+                <a href="" class="ui-link-inherit"><h3>{{userInfo.usuario}}</h3></a>
+            </div>
+        </div>
+    </li>
+    <li class="ui-li ui-li-divider ui-bar-a ">
+        Fecha de Registro
+    </li>
+    <li class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-a">
+        <div class="ui-btn-inner ui-li">
+            <div class="ui-btn-text">
+                <a href="" class="ui-link-inherit"><h3>{{dateFormat userInfo.fechaRegistro}}</h3></a>
+            </div>
+        </div>
+    </li>
+    <li class="ui-li ui-li-divider ui-bar-a">
+        Puntos
+    </li>
+    <li class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-a">
+        <div class="ui-btn-inner ui-li">
+            <div class="ui-btn-text">
+                <a href="" class="ui-link-inherit"><h3>{{userInfo.puntos}}</h3></a>
+            </div>
+        </div>
+    </li>
+    <li class="ui-li ui-li-divider ui-bar-a ">
+        Puntos
+    </li>
+    <li class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-a ui-corner-bottom">
+        <div class="ui-btn-inner ui-li">
+            <div class="ui-btn-text">
+                <a href="" class="ui-link-inherit"><h3>{{userInfo.nivel}}</h3></a>
+            </div>
+        </div>
+    </li>
+
+</ul>

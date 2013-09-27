@@ -670,6 +670,7 @@ hound.loginUser = function () {
                 if(!data){
                     hound.errorAlert("Login incorrecto");
                 }else{
+                    data.fechaRegistro = new Date(data.fechaRegistro);
                     localStorage.setItem('userInfo', JSON.stringify(data));
                     $('.ui-dialog').dialog('close');
                 }
@@ -717,6 +718,7 @@ hound.registerUser = function () {
                 contentType: "application/json",
                 timeout: 30000,
                 success: function (data) {
+                    data.fechaRegistro = new Date(data.fechaRegistro);
                     localStorage.setItem('userInfo', JSON.stringify(data));
                     $('.ui-dialog').dialog('close')
 

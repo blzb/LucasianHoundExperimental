@@ -25,26 +25,28 @@ templates['articuloTemplate'] = template(function (Handlebars,depth0,helpers,par
   return buffer;});
 templates['cardTemplate'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers; data = data || {};
-  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression;
+  var buffer = "", stack1, stack2, foundHelper, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;
 
 
-  buffer += "<table>\r\n    <tr>\r\n        <td rowspan=\"4\">\r\n            <a href=\"\" data-rel=\"back\" data-role=\"button\" data-icon=\"arrow-l\" data-iconpos=\"notext\"></a>\r\n            <a href=\"\" onclick = \"hound.displayBarcode();\" data-role=\"button\" data-inline=\"true\">Codigo</a>\r\n        </td>\r\n        <td>Usuario</td>\r\n        <td>";
+  buffer += "<ul class=\"ui-listview ui-listview-inset ui-corner-all ui-shadow\">\r\n\r\n    <li class=\"ui-li ui-li-divider ui-bar-a ui-corner-top\">\r\n        Usuario\r\n    </li>\r\n    <li class=\"ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-a\">\r\n        <div class=\"ui-btn-inner ui-li\">\r\n            <div class=\"ui-btn-text\">\r\n                <a href=\"\" class=\"ui-link-inherit\"><h3>";
   stack1 = depth0.userInfo;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.usuario;
   stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
-  buffer += escapeExpression(stack1) + "</td>\r\n    </tr>\r\n    <tr>\r\n        <td>Fecha de Registro</td>\r\n        <td>";
+  buffer += escapeExpression(stack1) + "</h3></a>\r\n            </div>\r\n        </div>\r\n    </li>\r\n    <li class=\"ui-li ui-li-divider ui-bar-a \">\r\n        Fecha de Registro\r\n    </li>\r\n    <li class=\"ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-a\">\r\n        <div class=\"ui-btn-inner ui-li\">\r\n            <div class=\"ui-btn-text\">\r\n                <a href=\"\" class=\"ui-link-inherit\"><h3>";
   stack1 = depth0.userInfo;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.fechaRegistro;
-  stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
-  buffer += escapeExpression(stack1) + "</td>\r\n    </tr>\r\n    <tr>\r\n        <td>Puntos</td>\r\n        <td>";
+  stack2 = {};
+  foundHelper = helpers.dateFormat;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:stack2,data:data}) : helperMissing.call(depth0, "dateFormat", stack1, {hash:stack2,data:data});
+  buffer += escapeExpression(stack1) + "</h3></a>\r\n            </div>\r\n        </div>\r\n    </li>\r\n    <li class=\"ui-li ui-li-divider ui-bar-a\">\r\n        Puntos\r\n    </li>\r\n    <li class=\"ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-a\">\r\n        <div class=\"ui-btn-inner ui-li\">\r\n            <div class=\"ui-btn-text\">\r\n                <a href=\"\" class=\"ui-link-inherit\"><h3>";
   stack1 = depth0.userInfo;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.puntos;
   stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
-  buffer += escapeExpression(stack1) + "</td>\r\n    </tr>\r\n    <tr>\r\n        <td>Nivel</td>\r\n        <td>";
+  buffer += escapeExpression(stack1) + "</h3></a>\r\n            </div>\r\n        </div>\r\n    </li>\r\n    <li class=\"ui-li ui-li-divider ui-bar-a \">\r\n        Puntos\r\n    </li>\r\n    <li class=\"ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-a ui-corner-bottom\">\r\n        <div class=\"ui-btn-inner ui-li\">\r\n            <div class=\"ui-btn-text\">\r\n                <a href=\"\" class=\"ui-link-inherit\"><h3>";
   stack1 = depth0.userInfo;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.nivel;
   stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
-  buffer += escapeExpression(stack1) + "</td>\r\n    </tr>\r\n</table>";
+  buffer += escapeExpression(stack1) + "</h3></a>\r\n            </div>\r\n        </div>\r\n    </li>\r\n\r\n</ul>\r\n";
   return buffer;});
 templates['comentariosForm'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers; data = data || {};

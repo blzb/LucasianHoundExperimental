@@ -3,6 +3,7 @@ jQuery.fn.reset = function() {
         this.reset();
     });
 };
+
 var portada;
 map = new Object();
 $.mobile.defaultPageTransition = "fade";

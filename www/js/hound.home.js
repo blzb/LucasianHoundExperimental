@@ -6,9 +6,13 @@ function onDeviceReady() {
     hound.loadApp();
     hound.displayMainMenu();
     hound.validateComentario();
+    Handlebars.registerHelper('dateFormat', function(context) {
+        var date = new Date(context);
+        return date.toLocaleString();
+    });
 };
 hound.onResume = function(){
-}
+    }
 hound.refreshApp =function(){
     window.location = "index.html";   
 }/*
