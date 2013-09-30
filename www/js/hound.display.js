@@ -292,23 +292,24 @@ hound.loadCard= function(){
         userInfo:datos
     }));
     $(".contenidoCard").trigger( "create");
-    $(".imagenCodigo").barcode({
-        code: datos.userId, 
-        crc:false
-    }, "code39",{
-        barWidth:2, 
-        barHeight:100
-    });        
-
 }
 hound.displayBarcode = function(elemento, cadena){
-    //$.mobile.changePage("#Barcode");
+    $.mobile.changePage("#Barcode");
     var datos = JSON.parse(localStorage.getItem("userInfo"));
+    width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var ancho=0;
+    if(width>=603){
+        ancho = 3;
+    }else if(width>= 402){
+        ancho=2;
+    } else{
+        ancho = 1;
+    }
     $(".imagenCodigo").barcode({
         code: datos.userId, 
         crc:false
     }, "code39",{
-        barWidth:2, 
+        barWidth:ancho, 
         barHeight:100
     });        
 }

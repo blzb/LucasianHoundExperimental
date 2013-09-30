@@ -46,7 +46,7 @@ templates['cardTemplate'] = template(function (Handlebars,depth0,helpers,partial
   stack1 = depth0.userInfo;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.nivel;
   stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
-  buffer += escapeExpression(stack1) + "</h3></a>\r\n            </div>\r\n        </div>\r\n    </li>\r\n\r\n</ul>\r\n";
+  buffer += escapeExpression(stack1) + "</h3></a>\r\n            </div>\r\n        </div>\r\n    </li>\r\n</ul>\r\n<a href=\"\" onclick=\"hound.displayBarcode();\" class=\"ui-btn ui-shadow ui-btn-corner-all ui-btn-up-a\">\r\n    <span class=\"ui-btn-inner ui-btn-corner-all\">\r\n        <span class=\"ui-btn-text\">Codigo de Barras</span>        \r\n    </span>\r\n</a>\r\n";
   return buffer;});
 templates['comentariosForm'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers; data = data || {};
