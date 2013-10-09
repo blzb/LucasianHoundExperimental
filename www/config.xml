@@ -62,5 +62,5 @@
     <gap:splash src="splash/android/hdpi.png" gap:platform="android" gap:density="hdpi" />
     <gap:splash src="splash/bb/splash.png" gap:platform="blackberry" />
     <gap:splash src="splash/winphone/splash.jpg" gap:platform="winphone" />
-    <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.0.3" />
+    <gap:plugin name="com.phonegap.plugins.pushplugin" version="1.3.7" />
 </widget>
