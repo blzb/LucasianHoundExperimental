@@ -260,7 +260,7 @@ hound.getPortada = function (intentos) {
                 hound.updateables[portada.menuItems[i].id] = 0;
                 hound.downloadImage(portada.menuItems[i].rutaImage, portada.menuItems[i].id, portada.menuItems[i]);
             }
-        /*
+            /*
             for (var i = 0; i < portada.menuItems.length; i++) {
                 hound.updateables[portada.menuItems[i].id] = 0;
                 hound.downloadFile(portada.menuItems[i].rutaImage, portada.menuItems[i].id, portada.menuItems[i]);
@@ -297,7 +297,7 @@ hound.downloadImage = function(ruta, id, menuItem){
             hound.errorHandler(xhr, this, hound.errorPrint);
         },
         retryExceeded: function () {
-            //hound.itemUpdateCompleted(id);
+        //hound.itemUpdateCompleted(id);
         },
         tryCount: 0,
         retryLimit: 4,
@@ -654,7 +654,7 @@ hound.loginUser = function () {
             'nombre': device.name, 
             'plataforma': device.platform, 
             'versionOS': device.version
-            };
+        };
         hound.infoLog(JSON.stringify(loginJSON));
         $.mobile.showPageLoadingMsg("a", "Descargando Actualizaciones",
             false);
@@ -668,11 +668,26 @@ hound.loginUser = function () {
             timeout: 30000,
             success: function (data) {
                 if(!data){
-                    hound.errorAlert("Login incorrecto");
+                    if(!navigator.notification){
+                        alert("Login incorrecto");
+                        hound.hideModal();
+                    }else{
+                        navigator.notification.vibrate(500);
+                        navigator.notification.alert(
+                            "Login incorrecto",
+                            function(){
+                                hound.hideModal();
+                                $.mobile.changePage("#menuPrincipal");
+                            },
+                            'Error',
+                            'OK' 
+                            );              
+
+                    }
                 }else{
                     data.fechaRegistro = new Date(data.fechaRegistro);
                     localStorage.setItem('userInfo', JSON.stringify(data));
-                    $('.ui-dialog').dialog('close');
+                    hound.loadCard();
                 }
             },
             error: function (xhr, status, error) {
@@ -704,7 +719,7 @@ hound.registerUser = function () {
                 'nombre': device.name, 
                 'plataforma': device.platform, 
                 'versionOS': device.version
-                };
+            };
 
             $.mobile.showPageLoadingMsg("a", "Descargando Actualizaciones",
 

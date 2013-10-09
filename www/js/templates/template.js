@@ -42,7 +42,7 @@ templates['cardTemplate'] = template(function (Handlebars,depth0,helpers,partial
   stack1 = depth0.userInfo;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.puntos;
   stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
-  buffer += escapeExpression(stack1) + "</h3></a>\r\n            </div>\r\n        </div>\r\n    </li>\r\n    <li class=\"ui-li ui-li-divider ui-bar-a \">\r\n        Puntos\r\n    </li>\r\n    <li class=\"ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-a ui-corner-bottom\">\r\n        <div class=\"ui-btn-inner ui-li\">\r\n            <div class=\"ui-btn-text\">\r\n                <a href=\"\" class=\"ui-link-inherit\"><h3>";
+  buffer += escapeExpression(stack1) + "</h3></a>\r\n            </div>\r\n        </div>\r\n    </li>\r\n    <li class=\"ui-li ui-li-divider ui-bar-a \">\r\n        Nivel\r\n    </li>\r\n    <li class=\"ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-a ui-corner-bottom\">\r\n        <div class=\"ui-btn-inner ui-li\">\r\n            <div class=\"ui-btn-text\">\r\n                <a href=\"\" class=\"ui-link-inherit\"><h3>";
   stack1 = depth0.userInfo;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.nivel;
   stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1;
