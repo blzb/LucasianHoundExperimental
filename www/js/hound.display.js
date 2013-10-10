@@ -243,6 +243,7 @@ hound.displayExternalLink = function(elemento, params){
 hound.displayCard = function(elemento, cadena){
     if(hound.isLogged()){
         if(hound.isConnected()){
+            $.mobile.showPageLoadingMsg("a", "Descargando Actualizaciones",false);
             var loginJSON = {};
             var datos = JSON.parse(localStorage.getItem("userInfo"));
             loginJSON.email = datos.usuario;

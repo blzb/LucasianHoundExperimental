@@ -1,14 +1,14 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 Number.prototype.formatMoney = function(c, d, t){
-var n = this, 
+    var n = this, 
     c = isNaN(c = Math.abs(c)) ? 2 : c, 
     d = d == undefined ? "." : d, 
     t = t == undefined ? "," : t, 
     s = n < 0 ? "-" : "", 
     i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "", 
     j = (j = i.length) > 3 ? j % 3 : 0;
-   return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
- };
+    return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+};
 function onDeviceReady() {
     hound.validateDevice();
     $("#jqueryStyle").html(localStorage.getItem("tema"));	
@@ -18,14 +18,25 @@ function onDeviceReady() {
     hound.validateComentario();
     Handlebars.registerHelper('dateFormat', function(context) {
         var date = new Date(context);
-        return date.toLocaleString();
+        
+        var year = date.getFullYear();
+        var month= ("0" + (date.getMonth()+1)).slice(-2);
+        var hours = ("0" + date.getHours()).slice(-2);
+        var minutes = ("0" + date.getMinutes()).slice(-2);
+        var seconds = ("0" + date.getSeconds()).slice(-2);
+        var day = date.getDate();
+        var months = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dec"];
+        var converted_date = "";
+        converted_date = day+"/"+months[parseInt(month)-1] +"/"+year +" "+hours+":"+minutes+":"+seconds;
+        return converted_date;
+
     });
     Handlebars.registerHelper('formatMoney', function(number) {
         return number.formatMoney();
     });
 };
 hound.onResume = function(){
-    }
+}
 hound.refreshApp =function(){
     window.location = "index.html";   
 }/*
@@ -76,7 +87,7 @@ $(document).bind(
             }              
         }
     });
-*/
+ */
 /*$(document).bind("pagebeforechange", function(e, data){
     if(data.toPage[0].id){    
         if(data.options.fromPage && data.toPage){

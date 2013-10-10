@@ -57,8 +57,7 @@ hound.isConnected = function () {
 }
 hound.enviarComentario = function (intentos) {
     if ($("#comentariosForm").valid()) {
-        $.mobile.showPageLoadingMsg("a", "Descargando Actualizaciones",
-            false);
+        $.mobile.showPageLoadingMsg("a", "Descargando Actualizaciones",false);
         var comentarioJSON = {};
         comentarioJSON.nombre = $("#comentarioNombre").val();
         comentarioJSON.email = $("#comentarioEmail").val();
