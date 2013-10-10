@@ -27,7 +27,7 @@ function onDeviceReady() {
         var day = date.getDate();
         var months = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dec"];
         var converted_date = "";
-        converted_date = day+"/"+months[parseInt(month)-1] +"/"+year +" "+hours+":"+minutes+":"+seconds;
+        converted_date = day+"/"+month +"/"+year +" "+hours+":"+minutes+":"+seconds;
         return converted_date;
 
     });
