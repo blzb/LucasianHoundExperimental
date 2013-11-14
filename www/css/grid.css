@@ -25,7 +25,7 @@
 /* iPhone, etc portrait ---- */
 @media only screen and (max-width: 320px) {
     .gridMenuItem{
-        width: 49%;
+        width: 32%;
         padding: 0;
     }
     .left_col{
